@@ -14,5 +14,5 @@ int main(void) {
 		else
 			std::cout << "Invalid action" << std::endl;
 	}
-	return (0);
+	return 0;
 }

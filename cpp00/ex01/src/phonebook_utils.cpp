@@ -1,4 +1,5 @@
-#include "main.hpp"
+#include <iostream>
+#include <iomanip>
 
 void prompt(std::string &input) {
 	std::cout << "|  ADD |  SEARCH  | EXIT |" << std::endl;
@@ -16,16 +17,9 @@ void input(std::string output, std::string &buffer) {
 	}
 }
 
-void label() {
-	std::cout << std::right << std::setw(10) << "ID" << " | ";
-	std::cout << std::right << std::setw(10) << "First Name" << " | ";
-	std::cout << std::right << std::setw(10) << "Last Name" << " | ";
-	std::cout << std::right << std::setw(10) << "Nickname" << std::endl;
-}
-
 std::string shrink(std::string str) {
 	std::string sub = str.substr(0, 10);
 	if (sub.length() == 10)
 		sub[9] = '.';
-	return (sub);
+	return sub;
 }

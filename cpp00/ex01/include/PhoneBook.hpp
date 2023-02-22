@@ -6,8 +6,6 @@
 
 # define SIZE 8
 
-void label();
-
 class PhoneBook {
 private:
 	int	_size;
@@ -15,8 +13,8 @@ private:
 	Contact _contacts[SIZE];
 public:
 	PhoneBook(void);
-	void add();
-	void search();
+	void add( void );
+	void search( void );
 };
 
 #endif

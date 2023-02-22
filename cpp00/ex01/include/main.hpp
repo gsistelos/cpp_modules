@@ -6,4 +6,4 @@
 
 void prompt(std::string &input);
 
-#endif
+#endif //MAIN_HPP

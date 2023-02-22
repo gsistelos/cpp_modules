@@ -14,12 +14,16 @@ void PhoneBook::add() {
 }
 
 void PhoneBook::search() {
-	label();
+	std::cout << std::right << std::setw(10) << "ID" << " | ";
+	std::cout << std::right << std::setw(10) << "First Name" << " | ";
+	std::cout << std::right << std::setw(10) << "Last Name" << " | ";
+	std::cout << std::right << std::setw(10) << "Nickname" << std::endl;
 	for (int i = 0; i < this->_size; i++) {
-		this->_contacts[i].printContact();
+		this->_contacts[i].info();
 	}
-	std::string sindex;
+
 	std::cout << "\nType the ID you want to access: ";
+	std::string sindex;
 	std::getline(std::cin, sindex);
 	int index;
 	std::istringstream(sindex) >> index;
@@ -29,6 +33,6 @@ void PhoneBook::search() {
 	}
 	for (int i = 0; i < this->_size; i++) {
 		if (index == i + 1)
-			this->_contacts[i].printFullContact();
+			this->_contacts[i].details();
 	}
 }
