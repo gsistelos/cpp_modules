@@ -1,5 +1,4 @@
 #include <iostream>
-#include <iomanip>
 
 void prompt(std::string &input) {
 	std::cout << "|  ADD |  SEARCH  | EXIT |" << std::endl;
