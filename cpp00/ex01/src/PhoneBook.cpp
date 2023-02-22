@@ -32,7 +32,9 @@ void PhoneBook::search() {
 		return ;
 	}
 	for (int i = 0; i < this->_size; i++) {
-		if (index == i + 1)
+		if (index == i + 1) {
 			this->_contacts[i].details();
+			return ;
+		}
 	}
 }
