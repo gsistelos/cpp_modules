@@ -12,5 +12,5 @@ int main(void) {
 	std::cout << brain << std::endl;
 	std::cout << *stringPTR << std::endl;
 	std::cout << stringREF << std::endl;
-	return (0);
+	return 0;
 }

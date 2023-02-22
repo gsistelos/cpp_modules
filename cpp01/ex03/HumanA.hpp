@@ -1,5 +1,5 @@
 #ifndef HUMANA_HPP
-# define HUMANA_HPP
+#define HUMANA_HPP
 
 #include <iostream>
 #include "Weapon.hpp"
@@ -9,8 +9,8 @@ private:
 	std::string name;
 	Weapon* weapon;
 public:
-	HumanA(std::string name, Weapon& weapon);
-	void attack();
+	HumanA( std::string name, Weapon& weapon );
+	void attack( void );
 };
 
-#endif
+#endif //HUMANA_HPP

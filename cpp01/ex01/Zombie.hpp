@@ -3,8 +3,7 @@
 
 #include <iostream>
 
-class Zombie
-{
+class Zombie {
 private:
 	std::string name;
 public:
@@ -16,4 +15,4 @@ public:
 
 Zombie* zombieHorde( int N, std::string name );
 
-#endif
+#endif //ZOMBIE_HPP
