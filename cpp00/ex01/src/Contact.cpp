@@ -3,7 +3,7 @@
 Contact::Contact() {
 }
 
-Contact::Contact(int index) {
+Contact::Contact(const int& index) {
 	this->_id = index + 1;
 	input("First name: ", this->_first_name);
 	input("Last name: ", this->_last_name);
