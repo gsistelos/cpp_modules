@@ -4,6 +4,6 @@
 #include "PhoneBook.hpp"
 #include <iostream>
 
-void prompt(std::string& input);
+void prompt( std::string& input );
 
 #endif //MAIN_HPP

@@ -1,12 +1,12 @@
-NAME = phonebook
+NAME = Fixed
 
-SRC = $(addprefix src/, Contact.cpp main.cpp PhoneBook.cpp utils.cpp)
+SRC = Fixed.cpp main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Werror -Wextra -std=c++98 -I include/
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 all: $(NAME)
 

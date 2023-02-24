@@ -1,6 +1,9 @@
 #include "Zombie.hpp"
 
-int main(void) {
+Zombie* newZombie( std::string name );
+void randomChump( std::string name );
+
+int main( void ) {
 	//gguedes zombie is allocated at the heap, thus it must be destroyed using delete
 	Zombie* gguedes = newZombie("gguedes");
 	gguedes->announce();

@@ -17,7 +17,7 @@ static std::string replace(const std::string& str, const std::string& s1, const 
 	return new_str;
 }
 
-int main(int argc, char **argv) {
+int main( int argc, char **argv ) {
 	if (argc != 4) {
 		std::cerr << "Usage: ./Sed_is_for_losers [FILE] [FIND] [REPLACE]" << std::endl;
 		return 1;

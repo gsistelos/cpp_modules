@@ -14,9 +14,9 @@ private:
 	int _index;
 	Contact _contacts[SIZE];
 public:
-	PhoneBook(void);
-	void add(void);
-	void search(void);
+	PhoneBook( void );
+	void add( void );
+	void search( void );
 };
 
 #endif //PHONEBOOK_HPP

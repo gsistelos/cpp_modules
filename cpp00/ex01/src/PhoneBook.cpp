@@ -1,9 +1,9 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : _size(0), _index(0) {
+PhoneBook::PhoneBook( void ) : _size(0), _index(0) {
 }
 
-void PhoneBook::add() {
+void PhoneBook::add( void ) {
 	Contact contact = this->_index;
 	this->_contacts[this->_index] = contact;
 	if (this->_size < SIZE)
@@ -13,7 +13,7 @@ void PhoneBook::add() {
 	std::cout << "Added new contact" << std::endl;
 }
 
-void PhoneBook::search() {
+void PhoneBook::search( void ) {
 	std::cout << std::right << std::setw(10) << "ID" << " | ";
 	std::cout << std::right << std::setw(10) << "First Name" << " | ";
 	std::cout << std::right << std::setw(10) << "Last Name" << " | ";

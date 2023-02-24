@@ -1,9 +1,12 @@
 #include "Contact.hpp"
 
-Contact::Contact() {
+void input( std::string const& output, std::string& buffer );
+std::string shrink( std::string const& str );
+
+Contact::Contact( void ) {
 }
 
-Contact::Contact(const int& index) {
+Contact::Contact( int index ) {
 	this->_id = index + 1;
 	input("First name: ", this->_first_name);
 	input("Last name: ", this->_last_name);
@@ -11,14 +14,14 @@ Contact::Contact(const int& index) {
 	input("Darkest secret: ", this->_darkest_secret);
 }
 
-void Contact::info() {
+void Contact::info( void ) {
 	std::cout << std::right << std::setw(10) << this->_id << " | ";
 	std::cout << std::right << std::setw(10) << shrink(this->_first_name) << " | ";
 	std::cout << std::right << std::setw(10) << shrink(this->_last_name) << " | ";
 	std::cout << std::right << std::setw(10) << shrink(this->_nickname) << std::endl;
 }
 
-void Contact::details() {
+void Contact::details( void  ) {
 	std::cout << std::endl;
 	std::cout << "Index: " << this->_id << std::endl;
 	std::cout << "First name: " << this->_first_name << std::endl;

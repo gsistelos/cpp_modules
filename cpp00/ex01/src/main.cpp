@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-int main(void) {
+int main( void ) {
 	PhoneBook phonebook;
 	std::string input;
 	while (!std::cin.eof()) {
