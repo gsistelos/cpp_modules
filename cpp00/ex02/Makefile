@@ -1,12 +1,12 @@
-NAME = phonebook
+NAME = dream_work
 
-SRC = $(addprefix src/, Contact.cpp main.cpp PhoneBook.cpp utils.cpp)
+SRC = Account.cpp tests.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Werror -Wextra -std=c++98 -I include/
+CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 all: $(NAME)
 
