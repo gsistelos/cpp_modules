@@ -14,7 +14,7 @@ void PhoneBook::add( void ) {
 }
 
 void PhoneBook::search( void ) {
-	std::cout << std::right << std::setw(10) << "ID" << " | ";
+	std::cout << std::right << std::setw(10) << "Index" << " | ";
 	std::cout << std::right << std::setw(10) << "First Name" << " | ";
 	std::cout << std::right << std::setw(10) << "Last Name" << " | ";
 	std::cout << std::right << std::setw(10) << "Nickname" << std::endl;
@@ -22,17 +22,21 @@ void PhoneBook::search( void ) {
 		this->_contacts[i].info();
 	}
 
-	std::cout << "\nType the ID you want to access: ";
+	std::cout << "\nType the index you want to access: ";
 	std::string sindex;
 	std::getline(std::cin, sindex);
-	int index;
-	std::istringstream(sindex) >> index;
-	if (index < 1 || index > this->_size) {
-		std::cout << "Invalid ID" << std::endl;
+	if (sindex.length() != 1 || sindex.at(0) < '0' || sindex.at(0) > '7') {
+		std::cout << "Invalid input" << std::endl;
 		return ;
 	}
-	for (int i = 0; i < this->_size; i++) {
-		if (index == i + 1) {
+	int index;
+	std::istringstream(sindex) >> index;
+	if (index < 0 || index >= this->_size) {
+		std::cout << "Invalid index" << std::endl;
+		return ;
+	}
+	for (int i = 0; i <= this->_size; i++) {
+		if (index == i) {
 			this->_contacts[i].details();
 			return ;
 		}
