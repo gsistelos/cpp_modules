@@ -35,14 +35,21 @@ void Harl::complain( std::string level ) {
 	switch (i) {
 		case 0:
 			(this->*function[0])();
-
+			this->complain("INFO");
+			break;
 		case 1:
 			(this->*function[1])();
-
+			this->complain("WARNING");
+			break;
 		case 2:
 			(this->*function[2])();
-
+			this->complain("ERROR");
+			break;
 		case 3:
 			(this->*function[3])();
+			break;
+		default:
+			std::cout <<  "[ Probably complaining about insignificant problems ]" << std::endl;
+			break;
 	}
 }
