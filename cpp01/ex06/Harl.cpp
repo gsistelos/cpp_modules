@@ -27,8 +27,22 @@ void Harl::complain( std::string level ) {
 	std::string str[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Harl::*function[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	for (int i = 0; i < 4; i++) {
+	int i;
+	for (i = 0; i < 4; i++) {
 		if (level == str[i])
-			(this->*function[i])();
+			break ;
+	}
+	switch (i) {
+		case 0:
+			(this->*function[0])();
+
+		case 1:
+			(this->*function[1])();
+
+		case 2:
+			(this->*function[2])();
+
+		case 3:
+			(this->*function[3])();
 	}
 }

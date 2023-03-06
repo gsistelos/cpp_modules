@@ -1,0 +1,28 @@
+NAME = dream_work
+
+SRC = Account.cpp tests.cpp
+
+OBJ = $(SRC:.cpp=.o)
+
+CC = c++
+
+CFLAGS = -Wall -Werror -Wextra -std=c++98
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+
+.cpp.o:
+	$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
+
+clean:
+	$(RM) $(OBJ)
+
+fclean:
+	$(RM) $(OBJ)
+	$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
