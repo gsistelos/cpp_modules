@@ -3,13 +3,15 @@
 
 #include <iostream>
 
-class Zombie {
+class Zombie
+{
 private:
 	std::string name;
 public:
-	Zombie( std::string name );
-	~Zombie( void );
+	Zombie(std::string name);
+	~Zombie();
+
 	void announce( void );
 };
 
-#endif //ZOMBIE_HPP
+#endif /* ZOMBIE_HPP */
