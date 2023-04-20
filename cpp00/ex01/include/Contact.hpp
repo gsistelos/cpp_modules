@@ -4,7 +4,8 @@
 #include <iostream>
 #include <iomanip>
 
-class Contact {
+class Contact
+{
 private:
 	int _index;
 	std::string _first_name;
@@ -13,10 +14,12 @@ private:
 	std::string _phone_number;
 	std::string _darkest_secret;
 public:
-	Contact( void );
-	Contact( int index );
-	void info( void );
-	void details( void );
+	Contact(void);
+	Contact(int index);
+	~Contact();
+
+	void info(void);
+	void details(void);
 };
 
-#endif //CONTACT_HPP
+#endif /* CONTACT_HPP */
