@@ -4,15 +4,17 @@
 #include <iostream>
 #include "Weapon.hpp"
 
-class HumanB {
+class HumanB
+{
 private:
 	std::string name;
-	Weapon* weapon;
+	Weapon *weapon;
 public:
-	HumanB( std::string const& name );
-	HumanB( std::string const& name, Weapon& weapon );
-	void attack( void );
-	void setWeapon( Weapon& weapon );
+	HumanB(const std::string &name);
+	HumanB(const std::string &name, Weapon &weapon);
+
+	void attack(void);
+	void setWeapon(Weapon &weapon);
 };
 
-#endif //HUMANB_HPP
+#endif /* HUMANB_HPP */

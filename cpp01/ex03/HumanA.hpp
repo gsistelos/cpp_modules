@@ -4,13 +4,15 @@
 #include <iostream>
 #include "Weapon.hpp"
 
-class HumanA {
+class HumanA
+{
 private:
 	std::string name;
-	Weapon* weapon;
+	Weapon *weapon;
 public:
-	HumanA( std::string const& name, Weapon& weapon );
-	void attack( void );
+	HumanA(const std::string &name, Weapon &weapon);
+
+	void attack(void);
 };
 
-#endif //HUMANA_HPP
+#endif /* HUMANA_HPP */

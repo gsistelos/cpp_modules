@@ -1,20 +1,20 @@
-NAME = Sed_is_for_losers
+NAME	=	Sed_is_for_losers
 
-SRC = main.cpp
+SRC		=	main.cpp
 
-OBJ = $(SRC:.cpp=.o)
+OBJ		=	$(SRC:.cpp=.o)
 
-CC = c++
+CC		=	c++
 
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-.cpp.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)

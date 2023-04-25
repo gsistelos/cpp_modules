@@ -4,7 +4,10 @@
 
 #define BUFFER_SIZE 1024
 
-static std::string replace(const std::string& str, const std::string& s1, const std::string& s2) {
+static std::string replace(const std::string &str, const std::string &s1, const std::string &s2)
+{
+	if (s1.empty())
+		return str;
 	std::string new_str;
 	size_t pos = 0;
 	size_t found;
@@ -17,26 +20,25 @@ static std::string replace(const std::string& str, const std::string& s1, const 
 	return new_str;
 }
 
-int main( int argc, char **argv ) {
+int main(int argc, char **argv)
+{
 	if (argc != 4) {
 		std::cerr << "Usage: ./Sed_is_for_losers [FILE] [FIND] [REPLACE]" << std::endl;
 		return 1;
 	}
 
-	std::string file = argv[1];
+	std::string fileName = argv[1];
 
-	std::ifstream infile;
-	infile.open(file.c_str());
+	std::ifstream infile(fileName.c_str());
 	if (!infile.is_open()) {
-		std::cerr << "Sed_is_for_losers: " << file <<  ": " << strerror(errno) << std::endl;
+		std::cerr << "Sed_is_for_losers: " << fileName <<  ": " << strerror(errno) << std::endl;
 		return 1;
 	}
 
-	file += ".replace";
-	std::ofstream outfile;
-	outfile.open(file.c_str());
+	fileName += ".replace";
+	std::ofstream outfile(fileName.c_str());
 	if (!outfile.is_open()) {
-		std::cerr << "Sed_is_for_losers: " << file <<  ": " << strerror(errno) << std::endl;
+		std::cerr << "Sed_is_for_losers: " << fileName <<  ": " << strerror(errno) << std::endl;
 		infile.close();
 		return 1;
 	}
