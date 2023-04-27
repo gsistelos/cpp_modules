@@ -43,7 +43,7 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	char buffer[BUFFER_SIZE];
+	char buffer[BUFFER_SIZE + 1];
 	while (!infile.eof()) {
 		infile.read(&buffer[0], BUFFER_SIZE);
 		buffer[infile.gcount()] = '\0';
