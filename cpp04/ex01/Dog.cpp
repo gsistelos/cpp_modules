@@ -1,23 +1,25 @@
 #include "Dog.hpp"
 
-Dog::Dog(void) : Animal("Dog")
+Dog::Dog(void) : Animal("Dog"), brain(new Brain())
 {
 	std::cout << "Dog: Default constructor called." << std::endl;
 }
 
-Dog::Dog(const Dog &other) : Animal(other.type)
+Dog::Dog(const Dog &other) : Animal(other.type), brain(new Brain())
 {
 	std::cout << "Dog: Copy constructor called." << std::endl;
 }
 
 Dog::~Dog()
 {
+	delete brain;
 	std::cout << "Dog: Destructor called." << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &other)
 {
 	Animal::operator=(other);
+	brain = other.brain;
 	std::cout << "Dog: Assignment operator called." << std::endl;
 	return *this;
 }

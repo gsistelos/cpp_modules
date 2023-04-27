@@ -1,6 +1,6 @@
-NAME	=	Polimorphism
+NAME	=	I_dont_want_to_set_the_world_on_fire
 
-SRC		=	Animal.cpp Cat.cpp Dog.cpp main.cpp WrongAnimal.cpp WrongCat.cpp
+SRC		=	Animal.cpp Brain.cpp Cat.cpp Dog.cpp main.cpp WrongAnimal.cpp WrongCat.cpp
 
 OBJ		=	$(SRC:.cpp=.o)
 
