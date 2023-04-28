@@ -7,7 +7,7 @@
 int main(void)
 {
 	{
-		const Animal* animals = new Animal[N];
+		const Animal* animals[N];
 		for (int i = 0; i < N / 2; i++) {
 			animals[i] = new Dog();
 		}
@@ -18,7 +18,9 @@ int main(void)
 			std::cout << animals[i]->getType() << " " << std::endl;
 			animals[i]->makeSound();
 		}
-		delete[] animals;
+		for (int i = 0; i < N; i++) {
+			delete animals[i];
+		}
 	}
 
 	return 0;
