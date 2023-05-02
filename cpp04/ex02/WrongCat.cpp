@@ -1,11 +1,11 @@
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat(void) : WrongAAnimal("WrongCat")
+WrongCat::WrongCat(void) : WrongAnimal("WrongCat")
 {
 	std::cout << "WrongCat: Default constructor called." << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &other) : WrongAAnimal(other.type)
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other.type)
 {
 	std::cout << "WrongCat: Copy constructor called." << std::endl;
 }
@@ -17,7 +17,7 @@ WrongCat::~WrongCat()
 
 WrongCat &WrongCat::operator=(const WrongCat &other)
 {
-	WrongAAnimal::operator=(other);
+	WrongAnimal::operator=(other);
 	std::cout << "WrongCat: Assignment operator called." << std::endl;
 	return *this;
 }
