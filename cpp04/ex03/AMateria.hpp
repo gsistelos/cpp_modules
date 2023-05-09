@@ -8,7 +8,7 @@ class AMateria
 {
 protected:
 	std::string type;
-	std::string[2] useString;
+	std::string useString[2];
 public:
 	AMateria(std::string const & type);
 
