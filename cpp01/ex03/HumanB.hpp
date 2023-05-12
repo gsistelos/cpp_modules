@@ -8,13 +8,13 @@ class HumanB
 {
 private:
 	std::string name;
-	Weapon *weapon;
+	Weapon* weapon;
 public:
-	HumanB(const std::string &name);
-	HumanB(const std::string &name, Weapon &weapon);
+	HumanB( std::string const & name );
+	HumanB( std::string const & name, Weapon& weapon );
 
-	void attack(void);
-	void setWeapon(Weapon &weapon);
+	void attack( void );
+	void setWeapon( Weapon& weapon );
 };
 
 #endif /* HUMANB_HPP */

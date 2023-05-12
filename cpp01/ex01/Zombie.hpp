@@ -8,11 +8,11 @@ class Zombie
 private:
 	std::string name;
 public:
-	Zombie(void);
+	Zombie( void );
 	~Zombie();
 
-	void setName(std::string name);
-	void announce(void);
+	void setName( std::string name );
+	void announce( void );
 };
 
 #endif /* ZOMBIE_HPP */

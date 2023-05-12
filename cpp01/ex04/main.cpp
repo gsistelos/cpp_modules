@@ -2,32 +2,26 @@
 #include <fstream>
 #include <cstring>
 
-#define BUFFER_SIZE 1024
-
-static std::string replace(const std::string &str, const std::string &s1, const std::string &s2)
+static void replace( std::string& str, std::string const & s1, std::string const & s2 )
 {
 	if (s1.empty())
-		return str;
-	std::string new_str;
-	size_t pos = 0;
-	size_t found;
-	while ((found = str.find(s1, pos)) != std::string::npos) {
-		new_str += str.substr(pos, found - pos);
-		new_str += s2;
-		pos = found + s1.length();
+		return ;
+	size_t i = 0;
+	while ((i = str.find(s1, i)) != std::string::npos) {
+		str.erase(i, s1.length());
+		str.insert(i, s2);
+		i += s2.length();
 	}
-	new_str += str.substr(pos);
-	return new_str;
 }
 
-int main(int argc, char **argv)
+int main( int argc, char** argv )
 {
 	if (argc != 4) {
 		std::cerr << "Usage: ./Sed_is_for_losers [FILE] [FIND] [REPLACE]" << std::endl;
 		return 1;
 	}
 
-	std::string fileName = argv[1];
+	std::string fileName(argv[1]);
 
 	std::ifstream infile(fileName.c_str());
 	if (!infile.is_open()) {
@@ -43,12 +37,13 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	char buffer[BUFFER_SIZE + 1];
+	std::string buffer;
 	while (!infile.eof()) {
-		infile.read(&buffer[0], BUFFER_SIZE);
-		buffer[infile.gcount()] = '\0';
-		outfile << replace(buffer, argv[2], argv[3]);
+		std::getline(infile, buffer, '\0');
+		replace(buffer, argv[2], argv[3]);
+		outfile << buffer;
 	}
+
 	infile.close();
 	outfile.close();
 	return 0;

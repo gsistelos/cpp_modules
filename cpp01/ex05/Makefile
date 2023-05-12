@@ -1,27 +1,28 @@
 NAME	=	Harl_2.0
 
-SRC		=	main.cpp Harl.cpp
+SRCS	=	main.cpp Harl.cpp
 
-OBJ		=	$(SRC:.cpp=.o)
+OBJS	=	$(SRCS:.cpp=.o)
 
 CC		=	c++
 
 CFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
+RM		=	rm -f
+
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) -o $(NAME)
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+.cpp.o:
+	$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJS)
 
 fclean:
-	$(RM) $(OBJ)
-	$(RM) $(NAME)
+	$(RM) $(OBJS) $(NAME)
 
 re: fclean all
 
