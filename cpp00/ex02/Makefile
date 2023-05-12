@@ -1,27 +1,28 @@
-NAME = dream_work
+NAME	=	dream_work
 
-SRC = Account.cpp tests.cpp
+SRCS	=	Account.cpp tests.cpp
 
-OBJ = $(SRC:.cpp=.o)
+OBJS	=	$(SRCS:.cpp=.o)
 
-CC = c++
+CC		=	c++
 
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+
+RM		=	rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) -o $(NAME)
 
 .cpp.o:
 	$(CC) $(CFLAGS) -c $< -o $(<:.cpp=.o)
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJS)
 
 fclean:
-	$(RM) $(OBJ)
-	$(RM) $(NAME)
+	$(RM) $(OBJS) $(NAME)
 
 re: fclean all
 

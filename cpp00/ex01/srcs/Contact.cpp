@@ -1,13 +1,10 @@
 #include "Contact.hpp"
 
-void input(std::string const &output, std::string &buffer);
-std::string shrink(std::string const &str);
-
-Contact::Contact(void)
+Contact::Contact( void )
 {
 }
 
-Contact::Contact(int index)
+Contact::Contact( int index )
 {
 	this->_index = index;
 	input("First name: ", _first_name);
@@ -21,7 +18,26 @@ Contact::~Contact()
 {
 }
 
-void Contact::info(void)
+void Contact::input( std::string const & output, std::string& buffer )
+{
+	std::cout << output;
+	std::getline(std::cin, buffer);
+	while (!std::cin.eof() && buffer.empty()) {
+		std::cout << "Invalid input: empty line" << std::endl;
+		std::cout << output;
+		std::getline(std::cin, buffer);
+	}
+}
+
+std::string Contact::shrink( std::string& str )
+{
+	std::string sub = str.substr(0, 10);
+	if (sub.length() == 10)
+		sub[9] = '.';
+	return sub;
+}
+
+void Contact::info( void )
 {
 	std::cout << std::right << std::setw(10) << _index << " | ";
 	std::cout << std::right << std::setw(10) << shrink(_first_name) << " | ";
@@ -29,7 +45,7 @@ void Contact::info(void)
 	std::cout << std::right << std::setw(10) << shrink(_nickname) << std::endl;
 }
 
-void Contact::details(void)
+void Contact::details( void )
 {
 	std::cout << std::endl;
 	std::cout << "Index: " << _index << std::endl;

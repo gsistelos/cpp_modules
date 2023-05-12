@@ -14,12 +14,14 @@ private:
 	std::string _phone_number;
 	std::string _darkest_secret;
 public:
-	Contact(void);
-	Contact(int index);
+	Contact( void );
+	Contact( int index );
 	~Contact();
 
-	void info(void);
-	void details(void);
+	void input( std::string const & output, std::string& buffer );
+	std::string shrink( std::string& str );
+	void info( void );
+	void details( void );
 };
 
 #endif /* CONTACT_HPP */

@@ -1,6 +1,6 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void) : _size(0), _index(0)
+PhoneBook::PhoneBook( void ) : _size(0), _index(0)
 {
 }
 
@@ -8,7 +8,31 @@ PhoneBook::~PhoneBook()
 {
 }
 
-void PhoneBook::add(void)
+void PhoneBook::start( void )
+{
+	std::string input;
+
+	while (!std::cin.eof()) {
+		prompt(input);
+		if (input == "ADD")
+			add();
+		else if (input == "SEARCH")
+			search();
+		else if (input == "EXIT")
+			break ;
+		else
+			std::cout << "Invalid action" << std::endl;
+	}
+}
+
+void PhoneBook::prompt( std::string& input )
+{
+	std::cout << "|  ADD |  SEARCH  | EXIT  |" << std::endl;
+	std::cout << ">";
+	std::getline(std::cin, input);
+}
+
+void PhoneBook::add( void )
 {
 	Contact contact = _index;
 	_contacts[this->_index] = contact;
@@ -20,7 +44,7 @@ void PhoneBook::add(void)
 	std::cout << "Added new contact" << std::endl;
 }
 
-void PhoneBook::search(void)
+void PhoneBook::search( void )
 {
 	std::cout << std::setw(10) << "Index" << " | ";
 	std::cout << std::setw(10) << "First Name" << " | ";

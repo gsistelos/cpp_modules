@@ -15,11 +15,13 @@ private:
 	int _index;
 	Contact _contacts[SIZE];
 public:
-	PhoneBook(void);
+	PhoneBook( void );
 	~PhoneBook();
 
-	void add(void);
-	void search(void);
+	void start( void );
+	void prompt( std::string& input );
+	void add( void );
+	void search( void );
 };
 
 #endif /* PHONEBOOK_HPP */
