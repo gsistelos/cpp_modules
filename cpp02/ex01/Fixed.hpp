@@ -4,22 +4,27 @@
 #include <iostream>
 #include <cmath>
 
-class Fixed {
+class Fixed
+{
 private:
 	int _value;
-	static const int _fractional_bits = 8;
+	static int const _fractional_bits = 8;
 public:
 	Fixed( void );
-	Fixed( int const value );
-	Fixed( float const value );
-	Fixed( Fixed const& other );
-	~Fixed( void );
-	Fixed& operator=( Fixed const& other );
-	friend std::ostream& operator<<( std::ostream& os, Fixed const& fixed );
+	Fixed( int value );
+	Fixed( float value );
+	Fixed( Fixed const & other );
+	~Fixed();
+
+	Fixed& operator=( Fixed const & other );
+
 	int toInt( void ) const;
 	float toFloat( void ) const;
+
 	int getRawBits( void ) const;
 	void setRawBits( int const raw );
 };
 
-#endif //FIXED_HPP
+std::ostream& operator<<( std::ostream& os, Fixed const & fixed );
+
+#endif /* FIXED_HPP */

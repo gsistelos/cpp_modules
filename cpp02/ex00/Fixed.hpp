@@ -3,17 +3,20 @@
 
 #include <iostream>
 
-class Fixed {
+class Fixed
+{
 private:
 	int _value;
-	static const int _fractional_bits = 8;
+	static int const _fractional_bits = 8;
 public:
 	Fixed( void );
-	Fixed( Fixed const& other );
-	~Fixed( void );
-	Fixed& operator=( Fixed const& other );
+	Fixed( Fixed const & other );
+	~Fixed();
+
+	Fixed& operator=( Fixed const & other );
+
 	int getRawBits( void ) const;
 	void setRawBits( int const raw );
 };
 
-#endif //FIXED_HPP
+#endif /* FIXED_HPP */
