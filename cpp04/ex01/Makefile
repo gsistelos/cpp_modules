@@ -1,8 +1,8 @@
 NAME		=	I_dont_want_to_set_the_world_on_fire
 
-SRC			=	Animal.cpp Brain.cpp Cat.cpp Dog.cpp main.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS		=	Animal.cpp Brain.cpp Cat.cpp Dog.cpp main.cpp WrongAnimal.cpp WrongCat.cpp
 
-OBJ			=	$(SRC:.cpp=.o)
+OBJS		=	$(SRCS:.cpp=.o)
 
 CXX			=	c++
 
@@ -12,18 +12,17 @@ RM			=	rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJS)
 
 fclean:
-	$(RM) $(OBJ)
-	$(RM) $(NAME)
+	$(RM) $(OBJS) $(NAME)
 
 re: fclean all
 

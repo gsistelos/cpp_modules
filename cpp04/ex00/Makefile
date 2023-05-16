@@ -1,8 +1,8 @@
 NAME		=	Polimorphism
 
-SRC			=	Animal.cpp Cat.cpp Dog.cpp main.cpp WrongAnimal.cpp WrongCat.cpp
+SRCS		=	Animal.cpp Cat.cpp Dog.cpp main.cpp WrongAnimal.cpp WrongCat.cpp
 
-OBJ			=	$(SRC:.cpp=.o)
+OBJS		=	$(SRCS:.cpp=.o)
 
 CXX			=	c++
 
@@ -12,18 +12,17 @@ RM			=	rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJS)
 
 fclean:
-	$(RM) $(OBJ)
-	$(RM) $(NAME)
+	$(RM) $(OBJS) $(NAME)
 
 re: fclean all
 
