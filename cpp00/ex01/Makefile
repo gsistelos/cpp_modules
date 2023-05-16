@@ -1,24 +1,24 @@
-NAME	=	phonebook
+NAME		=	phonebook
 
-SRCS	=	$(addprefix srcs/, Contact.cpp main.cpp PhoneBook.cpp)
+SRCS		=	$(addprefix srcs/, Contact.cpp main.cpp PhoneBook.cpp)
 
-OBJS	=	$(SRCS:.cpp=.o)
+OBJS		=	$(SRCS:.cpp=.o)
 
-CC		=	c++
+CXX			=	c++
 
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-INCLUDE	=	-I include/
+INCLUDE		=	-I include/
 
-RM		=	rm -f
+RM			=	rm -f
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -o $(NAME)
+	$(CXX) $(OBJS) -o $(NAME)
 
 .cpp.o:
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $(<:.cpp=.o)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
