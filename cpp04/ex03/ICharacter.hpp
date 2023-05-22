@@ -3,7 +3,7 @@
 
 #include <string>
 
-class AMateria;
+#include "AMateria.hpp" /* Conflict include */
 
 class ICharacter
 {

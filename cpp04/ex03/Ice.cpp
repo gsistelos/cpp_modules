@@ -6,4 +6,9 @@ Ice::Ice(void) : type("ice"), useString({"* shoots an ice bolt at ", " *"})
 
 AMateria* Ice::clone() const
 {
+	Ice* other = new Ice;
+
+	other->type = type;
+	other->useString = useString;
+	return other;
 }
