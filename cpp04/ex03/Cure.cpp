@@ -1,14 +1,32 @@
 #include "Cure.hpp"
 
-Cure::Cure(void) : type("cure"), useString({"* heals ", "'s wounds *"})
+Cure::Cure( void ) : AMateria("cure")
+{
+}
+
+Cure::Cure( Cure const & other )
+{
+	*this = other;
+}
+
+Cure& Cure::operator=( Cure const & other )
+{
+	this->type = other.getType();
+}
+
+Cure::~Cure()
 {
 }
 
 AMateria* Cure::clone() const
 {
-	Cure* other = new Cure;
+	Cure* cure = new Cure;
 
-	other->type = type;
-	other->useString = useString;
-	return other;
+	*cure = *this;
+	return cure;
+}
+
+void Cure::use( ICharacter& target )
+{
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }

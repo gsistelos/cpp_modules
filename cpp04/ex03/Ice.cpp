@@ -1,14 +1,32 @@
 #include "Ice.hpp"
 
-Ice::Ice(void) : type("ice"), useString({"* shoots an ice bolt at ", " *"})
+Ice::Ice( void ) : AMateria("ice")
+{
+}
+
+Ice::Ice( Ice const & other )
+{
+	*this = other;
+}
+
+Ice& Ice::operator=( Ice const & other )
+{
+	this->type = other.getType();
+}
+
+Ice::~Ice()
 {
 }
 
 AMateria* Ice::clone() const
 {
-	Ice* other = new Ice;
+	Ice* ice = new Ice;
 
-	other->type = type;
-	other->useString = useString;
-	return other;
+	*ice = *this;
+	return ice;
+}
+
+void Ice::use( ICharacter& target )
+{
+	std::cout << "*  shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

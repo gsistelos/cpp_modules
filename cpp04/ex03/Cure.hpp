@@ -6,14 +6,15 @@
 class Cure : public AMateria
 {
 public:
-	Cure(void);
-	Cure(AMateria& other);
-	/* PURE VIRTUAL DISTRUCTOR? */
+	Cure( void );
+	Cure( Cure const & other );
 
-	AMateria& operator=(AMateria& other);
+	~Cure();
 
-	virtual AMateria* clone() const;
-	virtual void use(ICharacter& target);
+	Cure& operator=( Cure const & other );
+
+	AMateria* clone() const;
+	void use( ICharacter& target );
 };
 
 #endif /* CURE_HPP */

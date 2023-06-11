@@ -10,7 +10,8 @@ private:
 public:
 	MateriaSource(void);
 	MateriaSource(MateriaSource& other);
-	/* PURE VIRTUAL DISTRUCTOR? */
+
+	~MateriaSource();
 
 	MateriaSource& operator=(MateriaSource& other);
 
