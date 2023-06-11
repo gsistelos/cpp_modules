@@ -1,41 +1,54 @@
 #include "Character.hpp"
 
-Character::Character(void) : name("unnamed")
+Character::Character( void ) : _name("default")
 {
 	for (int i = 0; i < 4; i++) {
-		inventory[i] = NULL;
+		_inventory[i] = NULL;
 	}
 }
 
-Character::Character(std::string& name) : name(name)
+Character::Character( std::string& name ) : _name(name)
 {
 	for (int i = 0; i < 4; i++) {
-		inventory[i] = NULL;
+		_inventory[i] = NULL;
 	}
+}
+
+Character::Character( ICharacter const & other )
+{
+	*this = other;
 }
 
 Character::~Character()
 {
 }
 
-void Character::equip(AMateria* m)
+Character& Character::operator=( ICharacter const & other )
+{
+	this->_name = other.getName();
+	for (int i = 0; i < 4; i++) {
+		this->_inventory[i] = NULL;
+	}
+}
+
+void Character::equip( AMateria* m )
 {
 	for (int i = 0; i < 4; i++) {
-		if (inventory[i]) {
-			inventory[i] = m;
+		if (_inventory[i] == NULL) {
+			_inventory[i] = m;
 			return ;
 		}
 	}
 }
 
-void Character::unequip(int idx)
+void Character::unequip( int idx )
 {
-	inventory[idx] = NULL;
+	_inventory[idx] = NULL;
 }
 
-void Character::use(int idx, ICharacter& target)
+void Character::use( int idx, ICharacter& target )
 {
-	if (inventory[idx] == NULL)
+	if (_inventory[idx] == NULL)
 		return ;
-	inventory[idx]->use(target);
+	_inventory[idx]->use(target);
 }

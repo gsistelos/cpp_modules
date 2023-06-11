@@ -1,10 +1,10 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria( void ) : type("default")
+AMateria::AMateria( void ) : _type("default")
 {
 }
 
-AMateria::AMateria( std::string const & type ) : type(type)
+AMateria::AMateria( std::string const & type ) : _type(type)
 {
 }
 
@@ -19,12 +19,12 @@ AMateria::~AMateria()
 
 AMateria& AMateria::operator=( AMateria const & other )
 {
-	this->type = other.getType();
+	this->_type = other.getType();
 }
 
 std::string const & AMateria::getType() const
 {
-	return type;
+	return _type;
 }
 
 void AMateria::use( ICharacter& target )

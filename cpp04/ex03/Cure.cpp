@@ -4,14 +4,14 @@ Cure::Cure( void ) : AMateria("cure")
 {
 }
 
-Cure::Cure( Cure const & other )
+Cure::Cure( AMateria const & other )
 {
 	*this = other;
 }
 
-Cure& Cure::operator=( Cure const & other )
+Cure& Cure::operator=( AMateria const & other )
 {
-	this->type = other.getType();
+	this->_type = other.getType();
 }
 
 Cure::~Cure()
