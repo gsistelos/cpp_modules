@@ -1,5 +1,7 @@
 #include "Fixed.hpp"
 
+/* __Constructors__ */
+
 Fixed::Fixed( void ) : _value(0)
 {
 }
@@ -17,9 +19,13 @@ Fixed::Fixed( Fixed const & other )
 	*this = other;
 }
 
+/* __Destructors__ */
+
 Fixed::~Fixed()
 {
 }
+
+/* __Comparison Operators__ */
 
 Fixed& Fixed::operator=( Fixed const & other )
 {
@@ -57,37 +63,40 @@ bool Fixed::operator!=( Fixed const & other ) const
 	return _value != other.getRawBits();
 }
 
+/* __Arithmetic Operators__ */
+
 Fixed Fixed::operator+( Fixed const & other )
 {
-	return Fixed(toFloat() + other.toFloat());
+	Fixed fixed;
+
+	fixed.setRawBits(this->_value + other.getRawBits());
+	return fixed;
 }
 
 Fixed Fixed::operator-( Fixed const & other )
 {
-	return Fixed(toFloat() - other.toFloat());
+	Fixed fixed;
+
+	fixed.setRawBits(this->_value - other.getRawBits());
+	return fixed;
 }
 
 Fixed Fixed::operator*( Fixed const & other )
 {
-	return Fixed(toFloat() * other.toFloat());
+	return toFloat() * other.toFloat();
 }
 
 Fixed Fixed::operator/( Fixed const & other )
 {
-	return Fixed(toFloat() / other.toFloat());
+	return toFloat() / other.toFloat();
 }
+
+/* __Pre-increment/decrement __ */
 
 Fixed& Fixed::operator++( void )
 {
 	++_value;
 	return *this;
-}
-
-Fixed Fixed::operator++( int )
-{
-	Fixed tmp(*this);
-	++*this;
-	return tmp;
 }
 
 Fixed& Fixed::operator--( void )
@@ -96,12 +105,23 @@ Fixed& Fixed::operator--( void )
 	return *this;
 }
 
+/* __Post-increment/decrement__ */
+
+Fixed Fixed::operator++( int )
+{
+	Fixed tmp(*this);
+	++*this;
+	return tmp;
+}
+
 Fixed Fixed::operator--( int )
 {
 	Fixed tmp(*this);
 	--*this;
 	return tmp;
 }
+
+/* __Member Functions__ */
 
 Fixed& Fixed::min( Fixed& a, Fixed& b )
 {
@@ -150,6 +170,8 @@ void Fixed::setRawBits( int const raw )
 {
 	_value = raw;
 }
+
+/* __Functions__ */
 
 std::ostream& operator<<( std::ostream& os, Fixed const & fixed )
 {
