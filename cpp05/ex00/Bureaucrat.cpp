@@ -12,7 +12,7 @@ Bureaucrat::Bureaucrat( std::string const & name, int grade ) : _name(name), _gr
 		throw Bureaucrat::GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat( Bureaucrat const & other )
+Bureaucrat::Bureaucrat( Bureaucrat const & other ) : _name(other.getName())
 {
 	*this = other;
 }
