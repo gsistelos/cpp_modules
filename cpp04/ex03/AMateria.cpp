@@ -19,10 +19,11 @@ AMateria::~AMateria()
 
 AMateria& AMateria::operator=( AMateria const & other )
 {
-	this->_type = other.getType();
+	_type = other.getType();
+	return *this;
 }
 
-std::string const & AMateria::getType() const
+std::string const & AMateria::getType( void ) const
 {
 	return _type;
 }

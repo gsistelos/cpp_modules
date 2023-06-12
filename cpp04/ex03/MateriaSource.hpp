@@ -6,17 +6,17 @@
 class MateriaSource : public IMateriaSource
 {
 private:
-	AMateria* materia[4];
+	AMateria* _inventory[4];
 public:
-	MateriaSource(void);
-	MateriaSource(MateriaSource& other);
+	MateriaSource( void );
+	MateriaSource( MateriaSource const & other );
 
-	~MateriaSource();
+    ~MateriaSource();
 
-	MateriaSource& operator=(MateriaSource& other);
+	MateriaSource& operator=( MateriaSource const & other );
 
-	virtual void learnMateria(AMateria* m);
-	virtual AMateria* createMateria(std::string const & type);
+    void learnMateria( AMateria* m );
+    AMateria* createMateria( std::string const & type );
 };
 
 #endif /* MATERIASOURCE_HPP */

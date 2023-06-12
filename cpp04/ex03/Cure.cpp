@@ -11,19 +11,17 @@ Cure::Cure( AMateria const & other )
 
 Cure& Cure::operator=( AMateria const & other )
 {
-	this->_type = other.getType();
+	_type = other.getType();
+	return *this;
 }
 
 Cure::~Cure()
 {
 }
 
-AMateria* Cure::clone() const
+AMateria* Cure::clone( void ) const
 {
-	Cure* cure = new Cure;
-
-	*cure = *this;
-	return cure;
+	return new Cure(*this);
 }
 
 void Cure::use( ICharacter& target )

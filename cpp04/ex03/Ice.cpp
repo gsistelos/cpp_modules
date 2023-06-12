@@ -11,19 +11,17 @@ Ice::Ice( AMateria const & other )
 
 Ice& Ice::operator=( AMateria const & other )
 {
-	this->_type = other.getType();
+	_type = other.getType();
+	return *this;
 }
 
 Ice::~Ice()
 {
 }
 
-AMateria* Ice::clone() const
+AMateria* Ice::clone( void ) const
 {
-	Ice* ice = new Ice;
-
-	*ice = *this;
-	return ice;
+	return new Ice(*this);
 }
 
 void Ice::use( ICharacter& target )

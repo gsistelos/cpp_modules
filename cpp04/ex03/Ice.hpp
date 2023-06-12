@@ -13,7 +13,7 @@ public:
 
 	Ice& operator=( AMateria const & other );
 
-	AMateria* clone() const;
+	AMateria* clone( void ) const;
 	void use( ICharacter& target );
 };
 

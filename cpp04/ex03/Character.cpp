@@ -7,14 +7,14 @@ Character::Character( void ) : _name("default")
 	}
 }
 
-Character::Character( std::string& name ) : _name(name)
+Character::Character( std::string const & name ) : _name(name)
 {
 	for (int i = 0; i < 4; i++) {
 		_inventory[i] = NULL;
 	}
 }
 
-Character::Character( ICharacter const & other )
+Character::Character( Character const & other )
 {
 	*this = other;
 }
@@ -23,12 +23,19 @@ Character::~Character()
 {
 }
 
-Character& Character::operator=( ICharacter const & other )
+Character& Character::operator=( Character const & other )
 {
-	this->_name = other.getName();
+	_name = other.getName();
 	for (int i = 0; i < 4; i++) {
-		this->_inventory[i] = NULL;
+		delete _inventory[i];
+		_inventory[i] = other._inventory[i]->clone();
 	}
+	return *this;
+}
+
+std::string const & Character::getName( void ) const
+{
+	return _name;
 }
 
 void Character::equip( AMateria* m )

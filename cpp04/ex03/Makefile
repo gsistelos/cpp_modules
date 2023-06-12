@@ -1,12 +1,12 @@
-NAME		=	Interface_&_recap
+NAME		=	Interface_recap
 
-SRCS		=	main.cpp AMateria.cpp
+SRCS		=	main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 
 OBJS		=	$(SRCS:.cpp=.o)
 
 CXX			=	c++
 
-CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g
 
 RM			=	rm -f
 
