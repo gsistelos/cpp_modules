@@ -1,47 +1,15 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
 
 int main( void )
 {
-	try {
-		Bureaucrat random_guy("Random", 11);
+	Form form("Contract", 40, 20);
+	Bureaucrat gguedes("gguedes", 40);
+	Bureaucrat grsaiago("grsaiago", 41);
 
-		std::cout << random_guy << std::endl;
-		random_guy.incrementGrade(10);
-		std::cout << random_guy << std::endl;
-	} catch (std::exception & e) {
-		std::cerr << e.what() << std::endl;
-	}
-
-	try {
-		Bureaucrat other_guy("Other", 150);
-
-		std::cout << other_guy << std::endl;
-		other_guy.incrementGrade(150);
-		std::cout << other_guy << std::endl;
-	} catch (std::exception & e) {
-		std::cerr << e.what() << std::endl;
-	}
-
-	try {
-		Bureaucrat other_guy("Other", 140);
-
-		std::cout << other_guy << std::endl;
-		other_guy.decrementGrade(11);
-		std::cout << other_guy << std::endl;
-	} catch (std::exception & e) {
-		std::cerr << e.what() << std::endl;
-	}
-
-	try {
-		Bureaucrat other_guy("Other", 151);
-
-		std::cout << other_guy << std::endl;
-		other_guy.incrementGrade(150);
-		std::cout << other_guy << std::endl;
-	} catch (std::exception & e) {
-		std::cerr << e.what() << std::endl;
-	}
+	gguedes.signForm(form);
+	grsaiago.signForm(form);
 
 	return 0;
 }
