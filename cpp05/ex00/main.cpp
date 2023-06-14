@@ -9,7 +9,7 @@ int main( void )
 		std::cout << random_guy << std::endl;
 		random_guy.incrementGrade(10);
 		std::cout << random_guy << std::endl;
-	} catch (std::exception & e) {
+	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 
@@ -19,7 +19,7 @@ int main( void )
 		std::cout << other_guy << std::endl;
 		other_guy.incrementGrade(150);
 		std::cout << other_guy << std::endl;
-	} catch (std::exception & e) {
+	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 
@@ -29,7 +29,7 @@ int main( void )
 		std::cout << other_guy << std::endl;
 		other_guy.decrementGrade(11);
 		std::cout << other_guy << std::endl;
-	} catch (std::exception & e) {
+	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 
@@ -39,7 +39,7 @@ int main( void )
 		std::cout << other_guy << std::endl;
 		other_guy.incrementGrade(150);
 		std::cout << other_guy << std::endl;
-	} catch (std::exception & e) {
+	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 
