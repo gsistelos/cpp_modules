@@ -22,16 +22,28 @@ Intern& Intern::operator=( Intern const & other )
 AForm* Intern::makeForm( std::string const & name, std::string const & target )
 {
 	AForm* form = NULL;
+	std::string str[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 
 	try {
-		if (name == "ShrubberyCreationForm")
-			form = new ShrubberyCreationForm(target);
-		else if (name == "RobotomyRequestForm")
-			form = new RobotomyRequestForm(target);
-		else if (name == "PresidentialPardonForm")
-			form = new PresidentialPardonForm(target);
-		else
-			throw Intern::InvalidFormException();
+		int i;
+		for (i = 0; i < 3; i++) {
+			if (str[i] == name)
+				break;
+		}
+		switch (i) {
+			case 0:
+				form = new ShrubberyCreationForm(target);
+				break ;
+			case 1:
+				form = new RobotomyRequestForm(target);
+				break ;
+			case 2:
+				form = new PresidentialPardonForm(target);
+				break ;
+			default:
+				throw Intern::InvalidFormException();
+				break ;
+		}
 		std::cout << "Intern creates " << name << std::endl;
 	} catch (std::exception& e) {
 		std::cerr << "Intern couldn't create " <<
