@@ -5,7 +5,6 @@ int main(void)
 	{
 		ClapTrap gguedes;
 		ClapTrap assing(gguedes);
-		assing.setName("gguedes");
 		gguedes = assing;
 	}
 	std::cout << std::endl;
@@ -37,6 +36,13 @@ int main(void)
 		gguedes.beRepaired(10);
 		gguedes.takeDamage(10);
 		gguedes.beRepaired(1);
+		gguedes.attack("Sans");
+	}
+	std::cout << std::endl;
+	{
+		ClapTrap gguedes("gguedes");
+		gguedes.attack("Marvin");
+		gguedes.beRepaired(4294967286);
 		gguedes.attack("Sans");
 	}
 	return 0;

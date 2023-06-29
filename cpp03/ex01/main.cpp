@@ -5,7 +5,6 @@ int main(void)
 	{
 		ScavTrap gguedes;
 		ScavTrap assing(gguedes);
-		assing.setName("gguedes");
 		gguedes = assing;
 	}
 	std::cout << std::endl;

@@ -1,4 +1,4 @@
-NAME		=	Aaaaand..._OPEN!
+NAME		=	SomeTraps
 
 SRCS		=	main.cpp ClapTrap.cpp
 

@@ -5,7 +5,6 @@ int main(void)
 	{
 		FragTrap gguedes;
 		FragTrap assing(gguedes);
-		assing.setName("gguedes");
 		gguedes = assing;
 	}
 	std::cout << std::endl;
@@ -34,6 +33,7 @@ int main(void)
 		for(int i = 0; i < 11; i++) {
 			gguedes.attack("Sans");
 		}
+		gguedes.highFiveGuys();
 		gguedes.beRepaired(10);
 		gguedes.takeDamage(10);
 		gguedes.beRepaired(1);

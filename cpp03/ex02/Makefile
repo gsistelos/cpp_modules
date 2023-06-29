@@ -1,4 +1,4 @@
-NAME		=	Repetitive_work
+NAME		=	SomeTraps
 
 SRCS		=	main.cpp ClapTrap.cpp FragTrap.cpp ScavTrap.cpp
 
