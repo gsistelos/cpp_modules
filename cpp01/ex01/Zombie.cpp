@@ -1,4 +1,5 @@
 #include "Zombie.hpp"
+#include <iostream>
 
 Zombie::Zombie( void )
 {
@@ -6,7 +7,7 @@ Zombie::Zombie( void )
 
 Zombie::~Zombie()
 {
-	std::cout << "destroyed: " << name << std::endl;
+	std::cout << "Destroyed: " << name << std::endl;
 }
 
 void Zombie::setName( std::string name )
