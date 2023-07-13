@@ -1,6 +1,7 @@
 #include "ScavTrap.hpp"
+#include <iostream>
 
-int main(void)
+int main( void )
 {
 	{
 		ScavTrap gguedes;

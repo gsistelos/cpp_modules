@@ -1,6 +1,7 @@
 #include "ScavTrap.hpp"
+#include <iostream>
 
-ScavTrap::ScavTrap(void) : ClapTrap()
+ScavTrap::ScavTrap( void ) : ClapTrap()
 {
 	_hitPoints = 100;
 	_energyPoints = 50;
@@ -8,7 +9,7 @@ ScavTrap::ScavTrap(void) : ClapTrap()
 	std::cout << "ScavTrap " << _name << " created from default constructor." << std::endl;
 }
 
-ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
+ScavTrap::ScavTrap( std::string const & name ) : ClapTrap(name)
 {
 	_hitPoints = 100;
 	_energyPoints = 50;
@@ -16,7 +17,7 @@ ScavTrap::ScavTrap(const std::string &name) : ClapTrap(name)
 	std::cout << "ScavTrap " << _name << " created from name constructor." << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
+ScavTrap::ScavTrap( ScavTrap const & other ) : ClapTrap(other)
 {
 	std::cout << "ScavTrap " << _name << " created from copy constructor." << std::endl;
 }
@@ -26,14 +27,14 @@ ScavTrap::~ScavTrap()
 	std::cout << "ScavTrap " << _name << " destroyed." << std::endl;
 }
 
-ScavTrap &ScavTrap::operator=(const ScavTrap &other)
+ScavTrap& ScavTrap::operator=( ScavTrap const & other )
 {
 	ClapTrap::operator=(other);
 	std::cout << "ScavTrap " << _name << " assigned from operator=." << std::endl;
 	return *this;
 }
 
-void ScavTrap::attack(const std::string &target)
+void ScavTrap::attack( std::string const & target )
 {
 	if (_hitPoints == 0) {
 		std::cout << "ScavTrap " << _name << " has no hit points left to attack!" << std::endl;
@@ -45,7 +46,7 @@ void ScavTrap::attack(const std::string &target)
 	}
 }
 
-void ScavTrap::guardGate(void)
+void ScavTrap::guardGate( void )
 {
 	std::cout << _name << " is now in Gate keeper mode!" << std::endl;
 }

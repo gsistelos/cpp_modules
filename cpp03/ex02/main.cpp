@@ -1,6 +1,7 @@
 #include "FragTrap.hpp"
+#include <iostream>
 
-int main(void)
+int main( void )
 {
 	{
 		FragTrap gguedes;

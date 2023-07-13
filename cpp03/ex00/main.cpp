@@ -1,7 +1,7 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-int main(void)
+int main( void )
 {
 	{
 		ClapTrap gguedes;

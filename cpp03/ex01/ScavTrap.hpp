@@ -6,15 +6,15 @@
 class ScavTrap : public ClapTrap
 {
 public:
-	ScavTrap(void);
-	ScavTrap(const std::string &name);
-	ScavTrap(const ScavTrap &other);
+	ScavTrap( void );
+	ScavTrap( std::string const & name );
+	ScavTrap( ScavTrap const & other );
 	~ScavTrap();
 
-	ScavTrap &operator=(const ScavTrap &other);
+	ScavTrap& operator=( ScavTrap const & other );
 
-	void attack(const std::string &target);
-	void guardGate(void);
+	void attack( std::string const & target );
+	void guardGate( void );
 };
 
 #endif /* SCAVTRAP_HPP */

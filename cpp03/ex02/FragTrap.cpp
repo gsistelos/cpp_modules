@@ -1,6 +1,7 @@
 #include "FragTrap.hpp"
+#include <iostream>
 
-FragTrap::FragTrap(void) : ClapTrap()
+FragTrap::FragTrap( void ) : ClapTrap()
 {
 	_hitPoints = 100;
 	_energyPoints = 100;
@@ -8,7 +9,7 @@ FragTrap::FragTrap(void) : ClapTrap()
 	std::cout << "FragTrap " << _name << " created from default constructor." << std::endl;
 }
 
-FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
+FragTrap::FragTrap( std::string const & name ) : ClapTrap(name)
 {
 	_hitPoints = 100;
 	_energyPoints = 100;
@@ -16,7 +17,7 @@ FragTrap::FragTrap(const std::string &name) : ClapTrap(name)
 	std::cout << "FragTrap " << _name << " created from name constructor." << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &other) : ClapTrap(other)
+FragTrap::FragTrap( FragTrap const & other ) : ClapTrap(other)
 {
 	std::cout << "FragTrap " << _name << " created from copy constructor." << std::endl;
 }
@@ -26,14 +27,14 @@ FragTrap::~FragTrap()
 	std::cout << "FragTrap " << _name << " destroyed." << std::endl;
 }
 
-FragTrap &FragTrap::operator=(const FragTrap &other)
+FragTrap& FragTrap::operator=( FragTrap const & other)
 {
 	ClapTrap::operator=(other);
 	std::cout << "FragTrap " << _name << " assigned from operator=." << std::endl;
 	return *this;
 }
 
-void FragTrap::highFiveGuys(void)
+void FragTrap::highFiveGuys( void )
 {
 	std::cout << _name << " high five time!" << std::endl;
 }
