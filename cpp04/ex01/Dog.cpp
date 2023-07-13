@@ -5,7 +5,7 @@ Dog::Dog(void) : Animal("Dog"), brain(new Brain())
 	std::cout << "Dog: Default constructor called." << std::endl;
 }
 
-Dog::Dog(const Dog &other) : Animal(other.type), brain(new Brain())
+Dog::Dog(const Dog &other) : Animal(other.type), brain(new Brain(*other.brain))
 {
 	std::cout << "Dog: Copy constructor called." << std::endl;
 }
@@ -19,7 +19,7 @@ Dog::~Dog()
 Dog &Dog::operator=(const Dog &other)
 {
 	Animal::operator=(other);
-	brain = other.brain;
+	brain = new Brain(*other.brain);
 	std::cout << "Dog: Assignment operator called." << std::endl;
 	return *this;
 }
