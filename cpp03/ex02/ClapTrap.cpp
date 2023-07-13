@@ -1,16 +1,17 @@
 #include "ClapTrap.hpp"
+#include <iostream>
 
-ClapTrap::ClapTrap(void) : _name("Default"), _hitPoints(10), _energyPoints(10), _atkDamage(0)
+ClapTrap::ClapTrap( void ) : _name("Default"), _hitPoints(10), _energyPoints(10), _atkDamage(0)
 {
 	std::cout << "ClapTrap " << _name << " created from default constructor." << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string &name) : _name(name), _hitPoints(10), _energyPoints(10), _atkDamage(0)
+ClapTrap::ClapTrap( std::string const & name ) : _name(name), _hitPoints(10), _energyPoints(10), _atkDamage(0)
 {
 	std::cout << "ClapTrap " << _name << " created from name constructor." << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &other)
+ClapTrap::ClapTrap( ClapTrap const & other )
 	: _name(other._name), _hitPoints(other._hitPoints),
 	_energyPoints(other._energyPoints), _atkDamage(other._atkDamage)
 {
@@ -22,7 +23,7 @@ ClapTrap::~ClapTrap()
 	std::cout << "ClapTrap " << _name << " destroyed." << std::endl;
 }
 
-ClapTrap &ClapTrap::operator=(const ClapTrap &other)
+ClapTrap& ClapTrap::operator=( ClapTrap const & other )
 {
 	_name = other._name;
 	_hitPoints = other._hitPoints;
@@ -32,7 +33,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 	return *this;
 }
 
-void ClapTrap::attack(const std::string &target)
+void ClapTrap::attack( std::string const & target )
 {
 	if (_hitPoints == 0) {
 		std::cout << "ClapTrap " << _name << " has no hit points left to attack!" << std::endl;
@@ -44,7 +45,7 @@ void ClapTrap::attack(const std::string &target)
 	}
 }
 
-void ClapTrap::takeDamage(unsigned int amount)
+void ClapTrap::takeDamage( unsigned int amount )
 {
 	if (_hitPoints == 0) {
 		std::cout << "ClapTrap " << _name << " is already dead!" << std::endl;
@@ -57,7 +58,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 		_hitPoints -= amount;
 }
 
-void ClapTrap::beRepaired(unsigned int amount)
+void ClapTrap::beRepaired( unsigned int amount )
 {
 	if (_hitPoints == 0) {
 		std::cout << "ClapTrap " << _name << " has no hit points left to repair itself!" << std::endl;
