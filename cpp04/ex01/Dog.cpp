@@ -28,3 +28,8 @@ void Dog::makeSound(void) const
 {
 	std::cout << "Dog bark sound!" << std::endl;
 }
+
+std::string Dog::getIdea(void) const
+{
+	return brain->randomIdea();
+}

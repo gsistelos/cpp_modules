@@ -13,6 +13,8 @@ public:
 	~Brain();
 
 	Brain &operator=(const Brain &other);
+
+	std::string randomIdea(void) const;
 };
 
 #endif /* BRAIN_HPP */

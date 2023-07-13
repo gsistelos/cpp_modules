@@ -1,4 +1,6 @@
 #include "Brain.hpp"
+#include <cstdlib>
+#include <sys/time.h>
 
 Brain::Brain(void)
 {
@@ -37,4 +39,13 @@ Brain &Brain::operator=(const Brain &other)
 	}
 	std::cout << "Brain: Assignment constructor called." << std::endl;
 	return *this;
+}
+
+std::string Brain::randomIdea(void) const
+{
+	struct timeval tv;
+
+	gettimeofday(&tv, NULL);
+	srand(tv.tv_usec);
+	return ideas[rand() % 100];
 }
