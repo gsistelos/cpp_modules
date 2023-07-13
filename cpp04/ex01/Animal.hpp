@@ -1,23 +1,23 @@
 #ifndef ANIMAL_HPP
 #define ANIMAL_HPP
 
-#include <iostream>
+#include <string>
 
 class Animal
 {
 protected:
 	std::string type;
 public:
-	Animal(void);
-	Animal(const std::string &name);
-	Animal(const Animal &other);
+	Animal( void );
+	Animal( std::string const & name );
+	Animal( Animal const & other );
 	virtual ~Animal();
 
-	Animal &operator=(const Animal &other);
+	Animal& operator=( Animal const & other );
 
-	std::string getType(void) const;
+	std::string getType( void ) const;
 
-	virtual void makeSound(void) const;
+	virtual void makeSound( void ) const;
 };
 
 #endif /* ANIMAL_HPP */
