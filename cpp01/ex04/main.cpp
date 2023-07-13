@@ -6,11 +6,9 @@ static void replace( std::string& str, std::string const & s1, std::string const
 {
 	if (s1.empty())
 		return ;
-	size_t i = 0;
-	while ((i = str.find(s1, i)) != std::string::npos) {
+	for (size_t i = 0; (i = str.find(s1, i)) != std::string::npos; i += s2.length()) {
 		str.erase(i, s1.length());
 		str.insert(i, s2);
-		i += s2.length();
 	}
 }
 

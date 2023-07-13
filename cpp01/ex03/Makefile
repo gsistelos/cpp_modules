@@ -1,4 +1,4 @@
-NAME		=	Unnecessary_violence
+NAME		=	humans
 
 SRCS		=	HumanA.cpp HumanB.cpp main.cpp Weapon.cpp
 

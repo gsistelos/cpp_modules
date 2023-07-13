@@ -1,22 +1,22 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB( std::string const & name ) : name(name), weapon(NULL)
+HumanB::HumanB( std::string const & name ) : _name(name), _weapon(NULL)
 {
 }
 
-HumanB::HumanB( std::string const & name, Weapon& weapon ) : name(name), weapon(&weapon)
+HumanB::HumanB( std::string const & name, Weapon& weapon ) : _name(name), _weapon(&weapon)
 {
 }
 
 void HumanB::attack( void )
 {
-	if (weapon == NULL)
-		std::cout << name << " has no weapon to attack" << std::endl;
+	if (_weapon == NULL)
+		std::cout << _name << " has no weapon to attack" << std::endl;
 	else
-		std::cout << name << " attacks with their " << weapon->getType() << std::endl;
+		std::cout << _name << " attacks with their " << _weapon->getType() << std::endl;
 }
 
 void HumanB::setWeapon( Weapon& weapon )
 {
-	this->weapon = &weapon;
+	_weapon = &weapon;
 }
