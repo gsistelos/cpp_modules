@@ -2,7 +2,7 @@
 
 static void str_toupper( char* str )
 {
-	for (int i = 0; str[i]; i++) {
+	for (size_t i = 0; str[i]; i++) {
 		str[i] = std::toupper(str[i]);
 	}
 }
@@ -14,7 +14,7 @@ int main( int argc, char** argv )
 		return 0;
 	}
 
-	for (int i = 1; i < argc; i++) {
+	for (size_t i = 1; i < argc; i++) {
 		str_toupper(argv[i]);
 		std::cout << argv[i];
 	}
