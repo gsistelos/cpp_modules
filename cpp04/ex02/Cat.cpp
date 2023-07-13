@@ -5,7 +5,7 @@ Cat::Cat(void) : AAnimal("Cat"), brain(new Brain())
 	std::cout << "Cat: Default constructor called." << std::endl;
 }
 
-Cat::Cat(const Cat &other) : AAnimal(other.type), brain(new Brain())
+Cat::Cat(const Cat &other) : AAnimal(other.type), brain(new Brain(*other.brain))
 {
 	std::cout << "Cat: Copy constructor called." << std::endl;
 }
@@ -19,7 +19,7 @@ Cat::~Cat()
 Cat &Cat::operator=(const Cat &other)
 {
 	AAnimal::operator=(other);
-	brain = other.brain;
+	brain = new Brain(*other.brain);
 	std::cout << "Cat: Assignment operator called." << std::endl;
 	return *this;
 }
