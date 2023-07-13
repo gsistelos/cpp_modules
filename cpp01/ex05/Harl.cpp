@@ -1,4 +1,5 @@
 #include "Harl.hpp"
+#include <iostream>
 
 void Harl::debug( void )
 {
@@ -32,7 +33,7 @@ void Harl::complain( std::string level )
 	std::string str[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void (Harl::*function[])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
-	for (int i = 0; i < 4; i++) {
+	for (size_t i = 0; i < 4; i++) {
 		if (level == str[i]) {
 			(this->*function[i])();
 			return ;
