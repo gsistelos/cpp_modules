@@ -2,26 +2,24 @@
 #define PHONEBOOK_HPP
 
 #include "Contact.hpp"
-#include <iostream>
-#include <iomanip>
-#include <cstdlib>
-
-#define SIZE 8
+#include <string>
 
 class PhoneBook
 {
 private:
-	int _size;
-	int _index;
-	Contact _contacts[SIZE];
+	static const size_t _size = 8;
+	size_t _index;
+	Contact _contacts[_size];
+
+	void add( void );
+	void search( void );
+
+	static void prompt( std::string& input );
 public:
 	PhoneBook( void );
 	~PhoneBook();
 
 	void start( void );
-	void prompt( std::string& input );
-	void add( void );
-	void search( void );
 };
 
 #endif /* PHONEBOOK_HPP */
