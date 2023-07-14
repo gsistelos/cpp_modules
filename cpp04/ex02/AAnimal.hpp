@@ -13,7 +13,7 @@ public:
 	AAnimal( AAnimal const & other );
 	virtual ~AAnimal();
 
-	AAnimal &operator=( AAnimal const & other );
+	AAnimal& operator=( AAnimal const & other );
 
 	std::string getType( void ) const;
 
