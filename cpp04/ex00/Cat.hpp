@@ -6,13 +6,13 @@
 class Cat : public Animal
 {
 public:
-	Cat(void);
-	Cat(const Cat &other);
+	Cat( void );
+	Cat( Cat const & other );
 	~Cat();
 
-	Cat &operator=(const Cat &other);
+	Cat& operator=( Cat const & other );
 
-	void makeSound(void) const;
+	void makeSound( void ) const;
 };
 
 #endif /* CAT_HPP */
