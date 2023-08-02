@@ -19,6 +19,7 @@ Cat::~Cat()
 Cat &Cat::operator=(const Cat &other)
 {
 	Animal::operator=(other);
+	delete brain;
 	brain = new Brain(*other.brain);
 	std::cout << "Cat: Assignment operator called." << std::endl;
 	return *this;
