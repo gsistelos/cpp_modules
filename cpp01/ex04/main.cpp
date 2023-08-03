@@ -4,8 +4,8 @@
 
 static void replace( std::string& str, std::string const & s1, std::string const & s2 )
 {
-	if (s1.empty())
-		return ;
+	if (s1.empty()) return ;
+
 	for (size_t i = 0; (i = str.find(s1, i)) != std::string::npos; i += s2.length()) {
 		str.erase(i, s1.length());
 		str.insert(i, s2);
@@ -38,7 +38,9 @@ int main( int argc, char** argv )
 	std::string buffer;
 	while (!infile.eof()) {
 		std::getline(infile, buffer, '\0');
+
 		replace(buffer, argv[2], argv[3]);
+
 		outfile << buffer;
 	}
 

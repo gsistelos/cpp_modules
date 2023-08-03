@@ -30,29 +30,31 @@ void Harl::error( void )
 
 void Harl::complain( std::string level )
 {
-	std::string str[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	void (Harl::*function[])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string options[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+
+	void (Harl::*functions[])( void ) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 
 	size_t i;
 	for (i = 0; i < 4; i++) {
-		if (level == str[i])
+		if (level == options[i])
 			break ;
 	}
+
 	switch (i) {
 		case 0:
-			(this->*function[0])();
+			(this->*functions[0])();
 			this->complain("INFO");
 			break;
 		case 1:
-			(this->*function[1])();
+			(this->*functions[1])();
 			this->complain("WARNING");
 			break;
 		case 2:
-			(this->*function[2])();
+			(this->*functions[2])();
 			this->complain("ERROR");
 			break;
 		case 3:
-			(this->*function[3])();
+			(this->*functions[3])();
 			break;
 		default:
 			std::cout <<  "[ Probably complaining about insignificant problems ]" << std::endl;

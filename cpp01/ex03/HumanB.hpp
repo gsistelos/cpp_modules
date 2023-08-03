@@ -9,6 +9,7 @@ class HumanB
 private:
 	std::string _name;
 	Weapon* _weapon;
+
 public:
 	HumanB( std::string const & name );
 	HumanB( std::string const & name, Weapon& weapon );

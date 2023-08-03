@@ -9,6 +9,7 @@ int main( int argc, char** argv )
 		std::cout <<  "[ Probably complaining about insignificant problems ]" << std::endl;
 		return 0;
 	}
+
 	harl.complain(argv[1]);
 	return 0;
 }
