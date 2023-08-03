@@ -1,5 +1,5 @@
-#ifndef WRONGCAT_HPP
-#define WRONGCAT_HPP
+#ifndef WRONG_CAT_HPP
+#define WRONG_CAT_HPP
 
 #include "WrongAnimal.hpp"
 
@@ -15,4 +15,4 @@ public:
 	void makeSound( void ) const;
 };
 
-#endif /* WRONGCAT_HPP */
+#endif /* WRONG_CAT_HPP */

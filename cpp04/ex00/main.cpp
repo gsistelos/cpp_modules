@@ -6,32 +6,38 @@
 int main( void )
 {
 	{
-		const Animal* animal = new Animal();
-		const Animal* dog = new Dog();
-		const Animal* cat = new Cat();
+		Animal const * animal = new Animal();
+		Animal const * dog = new Dog();
+		Animal const * cat = new Cat();
 
-		std::cout << dog->getType() << " " << std::endl;
-		std::cout << cat->getType() << " " << std::endl;
-		cat->makeSound(); //will output the cat sound!
-		dog->makeSound();
+		std::cout << animal->getType() << std::endl;
+		std::cout << dog->getType() << std::endl;
+		std::cout << cat->getType() << std::endl;
+
 		animal->makeSound();
+		cat->makeSound(); // will output the cat sound!
+		dog->makeSound();
 
 		delete animal;
 		delete cat;
 		delete dog;
 	}
+
 	std::cout << std::endl;
+
 	{
-		const Animal* animal = new Animal();
-		const Animal* dog = new Dog();
-		const WrongAnimal* cat = new WrongCat();
-	
-		std::cout << dog->getType() << " " << std::endl;
-		std::cout << cat->getType() << " " << std::endl;
-		cat->makeSound(); //will output the wrongAnimal sound!
-		dog->makeSound();
+		Animal const * animal = new Animal();
+		Animal const * dog = new Dog();
+		WrongAnimal const * cat = new WrongCat();
+
+		std::cout << animal->getType() << std::endl;
+		std::cout << dog->getType() << std::endl;
+		std::cout << cat->getType() << std::endl;
+
 		animal->makeSound();
-	
+		cat->makeSound(); // will output the WrongAnimal sound!
+		dog->makeSound();
+
 		delete animal;
 		delete cat;
 		delete dog;

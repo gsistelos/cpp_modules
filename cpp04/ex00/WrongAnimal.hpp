@@ -1,5 +1,5 @@
-#ifndef WRONGANIMAL_HPP
-#define WRONGANIMAL_HPP
+#ifndef WRONG_ANIMAL_HPP
+#define WRONG_ANIMAL_HPP
 
 #include <string>
 
@@ -7,8 +7,9 @@ class WrongAnimal
 {
 protected:
 	std::string type;
+
 public:
-	WrongAnimal(void);
+	WrongAnimal( void );
 	WrongAnimal( std::string const & name );
 	WrongAnimal( WrongAnimal const & other );
 	~WrongAnimal();
@@ -20,4 +21,4 @@ public:
 	void makeSound( void ) const;
 };
 
-#endif /* WRONGANIMAL_HPP */
+#endif /* WRONG_ANIMAL_HPP */
