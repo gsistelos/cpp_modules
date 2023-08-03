@@ -14,10 +14,12 @@ int main( int argc, char** argv )
 		return 0;
 	}
 
-	for (size_t i = 1; i < argc; i++) {
+	for (int i = 1; i < argc; i++) {
 		str_toupper(argv[i]);
 		std::cout << argv[i];
 	}
+
 	std::cout << std::endl;
+
 	return 0;
 }

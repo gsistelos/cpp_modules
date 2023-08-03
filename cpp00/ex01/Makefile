@@ -1,4 +1,4 @@
-NAME		=	phonebook
+NAME		=	phoneBook
 
 SRCS		=	$(addprefix srcs/, Contact.cpp main.cpp PhoneBook.cpp)
 
@@ -8,7 +8,7 @@ CXX			=	c++
 
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-INCLUDE		=	-I include/
+INCLUDE		=	-Iinclude/
 
 RM			=	rm -f
 

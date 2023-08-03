@@ -2,8 +2,8 @@
 
 int main( void )
 {
-	PhoneBook phonebook;
+	PhoneBook phoneBook;
 
-	phonebook.start();
+	phoneBook.start();
 	return 0;
 }

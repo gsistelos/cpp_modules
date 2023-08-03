@@ -14,9 +14,9 @@ private:
 
 	static void input( std::string const & output, std::string& buffer );
 	static std::string shrink( std::string const & str );
+
 public:
 	Contact( void );
-	Contact( int index );
 	~Contact();
 
 	void edit( void );

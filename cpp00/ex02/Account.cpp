@@ -129,7 +129,7 @@ void	Account::_displayTimestamp( void ) {
 	std::cout << std::setfill('0') << std::setw(2) << date->tm_sec;
 	std::cout << "] ";
 
-	//std::cout << "[" << "19920104_091532" << "] ";
+	// std::cout << "[" << "19920104_091532" << "] ";
 }
 
 Account::Account( void ) {
