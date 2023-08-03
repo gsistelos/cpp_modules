@@ -7,16 +7,16 @@
 class Dog : public Animal
 {
 private:
-	Brain *brain;
+	Brain* brain;
+
 public:
-	Dog(void);
-	Dog(const Dog &other);
+	Dog( void );
+	Dog( Dog const & other );
 	~Dog();
 
-	Dog &operator=(const Dog &other);
+	Dog& operator=( Dog const & other );
 
-	void makeSound(void) const;
-	std::string getIdea(void) const;
+	void makeSound( void ) const;
 };
 
 #endif /* DOG_HPP */
