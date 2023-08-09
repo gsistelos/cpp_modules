@@ -4,10 +4,10 @@
 int main( void )
 {
 	try {
-		Bureaucrat random_guy("Random", 11);
+		Bureaucrat random_guy("Random", 1);
 
 		std::cout << random_guy << std::endl;
-		random_guy.incrementGrade(10);
+		random_guy.incrementGrade();
 		std::cout << random_guy << std::endl;
 	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
@@ -17,27 +17,27 @@ int main( void )
 		Bureaucrat other_guy("Other", 150);
 
 		std::cout << other_guy << std::endl;
-		other_guy.incrementGrade(150);
+		other_guy.decrementGrade();
 		std::cout << other_guy << std::endl;
 	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 
 	try {
-		Bureaucrat other_guy("Other", 140);
+		Bureaucrat other_guy("Other", -10);
 
 		std::cout << other_guy << std::endl;
-		other_guy.decrementGrade(11);
+		other_guy.decrementGrade();
 		std::cout << other_guy << std::endl;
 	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
 	}
 
 	try {
-		Bureaucrat other_guy("Other", 151);
+		Bureaucrat other_guy("Other", 1);
 
 		std::cout << other_guy << std::endl;
-		other_guy.incrementGrade(150);
+		other_guy.decrementGrade();
 		std::cout << other_guy << std::endl;
 	} catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;
