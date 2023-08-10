@@ -19,7 +19,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm& RobotomyRequestForm::operator=( AForm const & other )
 {
-	setSigned(other.getSigned());
+	AForm::operator=(other);
 	return *this;
 }
 
