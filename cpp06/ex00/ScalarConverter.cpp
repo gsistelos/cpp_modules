@@ -6,10 +6,13 @@
 #include <sstream>
 #include <iomanip>
 
-ScalarConverter::func ScalarConverter::functions[] = {
+void (*ScalarConverter::functions[])( void ) = {
 	&ScalarConverter::fromChar, &ScalarConverter::fromInt,
-	&ScalarConverter::fromFloat, &ScalarConverter::fromDouble
+	&ScalarConverter::fromFloat, &ScalarConverter::fromDouble,
+	&ScalarConverter::fromInvalid
 };
+
+std::string ScalarConverter::_literal;
 
 ScalarConverter::ScalarConverter( void )
 {
@@ -17,7 +20,7 @@ ScalarConverter::ScalarConverter( void )
 
 ScalarConverter::ScalarConverter( ScalarConverter const & other )
 {
-	*this = other;
+	(void)other;
 }
 
 ScalarConverter::~ScalarConverter()
@@ -30,157 +33,158 @@ ScalarConverter& ScalarConverter::operator=( ScalarConverter const & other )
 	return *this;
 }
 
-ScalarConverter::Type ScalarConverter::getType( std::string const & literal )
+ScalarConverter::Type ScalarConverter::getType( void )
 {
-	if (literal.length() == 1 && !std::isdigit(literal.at(0)))
+	if (_literal.length() == 1 && std::isdigit(_literal[0]) == false)
 		return CHAR;
 
-	if (literal == "nanf" || literal == "+inff" || literal == "-inff")
+	if (_literal == "nanf" || _literal == "+inff" || _literal == "-inff")
 		return FLOAT;
-	if (literal == "nan" || literal == "+inf" || literal == "-inf")
+	if (_literal == "nan" || _literal == "+inf" || _literal == "-inf")
 		return DOUBLE;
-	
-	if (ScalarConverter::isValidNumber(literal) == false)
+
+	if (ScalarConverter::validateLiteral())
 		return INVALID;
 
-	if (literal.find('f') != std::string::npos) {
-		if (literal.find('.') != std::string::npos)
+	if (_literal.find('.') != std::string::npos) {
+		if (_literal.find('f') != std::string::npos)
 			return FLOAT;
-		return INVALID;
-	}
-	if (literal.find('.') != std::string::npos) {
 		return DOUBLE;
 	}
+
 	return INT;
 }
 
-bool ScalarConverter::isValidNumber( std::string const & literal )
+bool ScalarConverter::validateLiteral( void )
 {
 	size_t i = 0;
-	if (!std::isdigit(literal.at(i))) {
-		if (literal.at(i) != '+' && literal.at(i) != '-')
-			return false;
+
+	if (_literal[i] == '+' || _literal[i] == '-')
 		i++;
-		if (!std::isdigit(literal.at(i)))
-			return false;
-	}
-	i++;
 
 	size_t dots = 0;
-
-	for (; i < literal.length() - 1; i++) {
-		if (std::isdigit(literal.at(i)))
-			continue ;
-		if (literal.at(i) != '.')
-			break ;
-		dots++;
-		if (dots > 1)
-			return false;
-	}
-	if ((i == literal.length() - 1 && (std::isdigit(literal.at(i)) || literal.at(i) == 'f')))
-		return true;
-	return false;
-}
-
-void ScalarConverter::fromChar( std::string const & literal )
-{
-	std::cout << "char conversion" << std::endl;
-
-	char c = literal.at(0);
-
-	printConversions(c, static_cast<int>(c),
-		static_cast<float>(c), static_cast<double>(c), 1);
-}
-
-void ScalarConverter::fromInt( std::string const & literal )
-{
-	std::cout << "int conversion" << std::endl;
-
-	int i = std::atoi(literal.c_str());
-
-	std::stringstream ss;
-	ss << i;
-	if (ss.str() != literal) {
-		std::cerr << "Invalid conversion: overflow" << std::endl;
-		std::cerr << "conversion: " << ss.str() << std::endl;
-		return ;
+	while (_literal[i]) {
+		if (std::isdigit(_literal[i]) == false) {
+			if (_literal[i] == '.' && dots == 0)
+				dots++;
+			else if (_literal[i] == 'f' && _literal[i + 1] == '\0')
+				return 0;
+			else
+				return 1;
+		}
+		i++;
 	}
 
-	printConversions(static_cast<char>(i), i,
-		static_cast<float>(i), static_cast<double>(i), 1);
+	return 0;
 }
 
-void ScalarConverter::fromFloat( std::string const & literal )
+size_t ScalarConverter::getPrecision( void )
 {
-	std::cout << "float conversion" << std::endl;
+	size_t offset = _literal.find('.');
+	if (offset == std::string::npos)
+		return 1;
 
-	float f = std::atof(literal.c_str());
+	size_t precision = 0;
 
-	int precision = literal.length() - literal.find('.') - 2;
-
-	std::stringstream ss;
-	ss << std::fixed << std::setprecision(precision) << f << "f";
-	if (ss.str() != literal) {
-		std::cerr << "Invalid conversion: overflow" << std::endl;
-		std::cerr << "conversion: " << ss.str() <<std::endl;
-		return ;
+	for (size_t i = offset; _literal[i]; i++) {
+		if (_literal[i] == 'f')
+			break;
+		else if (_literal[i] != '0')
+			precision = i - offset;
 	}
 
-	printConversions(static_cast<char>(f), static_cast<int>(f),
-		f, static_cast<double>(f), precision);
+	return precision;
 }
 
-void ScalarConverter::fromDouble( std::string const & literal )
+void ScalarConverter::fromChar( void )
 {
-	std::cout << "double conversion" << std::endl;
+	char c = _literal[0];
+	int i = static_cast<int>(c);
+	float f = static_cast<float>(c);
+	double d = static_cast<double>(c);
 
-	double d = std::atof(literal.c_str());
-
-	int precision = literal.length() - literal.find('.') - 1;
-
-	std::stringstream ss;
-	ss << std::fixed << std::setprecision(precision) << d;
-	if (ss.str() != literal) {
-		std::cerr << "Invalid conversion: overflow" << std::endl;
-		std::cerr << "conversion: " << ss.str() <<std::endl;
-		return ;
-	}
-
-	printConversions(static_cast<char>(d), static_cast<int>(d),
-		static_cast<float>(d), d, precision);
+	std::cout << "char: '" << c << "'" << std::endl;
+	std::cout << "int: " << i << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
 }
 
-void ScalarConverter::printConversions( char c, int i, float f, double d, int precision )
+void ScalarConverter::fromInt( void )
 {
-	if (floor(d) != c) {
+	int i = atoi(_literal.c_str());
+	char c = static_cast<char>(i);
+	float f = static_cast<float>(i);
+	double d = static_cast<double>(i);
+
+	if (i < std::numeric_limits<char>::min() || i > std::numeric_limits<char>::max())
 		std::cout << "char: impossible" << std::endl;
-	} else if (std::isprint(c)) {
-		std::cout << "char: " << c << std::endl;
-	} else {
+	else if (std::isprint(c))
+		std::cout << "char: '" << c << "'" << std::endl;
+	else
 		std::cout << "char: Non displayable" << std::endl;
-	}
+	std::cout << "int: " << i << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+}
 
-	if (floor(d) != i) {
+void ScalarConverter::fromFloat( void )
+{
+	float f = static_cast<float>(atof(_literal.c_str()));
+	char c = static_cast<char>(f);
+	int i = static_cast<int>(f);
+	double d = static_cast<double>(f);
+
+	if (f < std::numeric_limits<char>::min() || f > std::numeric_limits<char>::max())
+		std::cout << "char: impossible" << std::endl;
+	else if (std::isprint(c))
+		std::cout << "char: '" << c << "'" << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+	if (f < std::numeric_limits<int>::min() || f > std::numeric_limits<int>::max())
 		std::cout << "int: impossible" << std::endl;
-	} else {
+	else
 		std::cout << "int: " << i << std::endl;
-	}
+	std::cout << "float: " << std::fixed << std::setprecision(getPrecision()) << f << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(getPrecision()) << d << std::endl;
+}
 
-	if (d != f) { // comparision messing floating point values fsr
+void ScalarConverter::fromDouble( void )
+{
+	double d = atof(_literal.c_str());
+	char c = static_cast<char>(d);
+	int i = static_cast<int>(d);
+	float f = static_cast<float>(d);
+
+	if (d < std::numeric_limits<char>::min() || d > std::numeric_limits<char>::max())
+		std::cout << "char: impossible" << std::endl;
+	else if (std::isprint(c))
+		std::cout << "char: '" << c << "'" << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+	if (d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max())
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << i << std::endl;
+	if (d < std::numeric_limits<float>::min() || d > std::numeric_limits<float>::max())
 		std::cout << "float: impossible" << std::endl;
-	} else {
-		std::cout << std::fixed << std::setprecision(precision) << "float: " << f << "f" << std::endl;
-	}
+	else
+		std::cout << "float: " << std::fixed << std::setprecision(getPrecision()) << f << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(getPrecision()) << d << std::endl;
+}
 
-	std::cout << std::fixed << std::setprecision(precision) << "double: " << d << std::endl;
+void ScalarConverter::fromInvalid( void )
+{
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: impossible" << std::endl;
+	std::cout << "double: impossible" << std::endl;
 }
 
 void ScalarConverter::convert( std::string const & literal )
 {
-	Type type = getType(literal);
-	if (type == INVALID) {
-		std::cerr << "Invalid conversion: invalid type" << std::endl;
-		return ;
-	}
-	functions[type](literal);
+	ScalarConverter::_literal = literal;
+
+	Type type = getType();
+
+	functions[type]();
 }

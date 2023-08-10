@@ -1,5 +1,5 @@
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+#ifndef SCALAR_CONVERTER_HPP
+#define SCALAR_CONVERTER_HPP
 
 #include <string>
 
@@ -8,16 +8,18 @@ class ScalarConverter
 private:
 	enum Type { CHAR, INT, FLOAT, DOUBLE, INVALID };
 
-	typedef void (*func)(std::string const &);
-	static func functions[];
+	static void (*functions[])( void );
+	static std::string _literal;
 
-	static Type getType( std::string const & literal );
-	static bool isValidNumber( std::string const & literal );
-	static void fromChar( std::string const & literal );
-	static void fromInt( std::string const & literal );
-	static void fromFloat( std::string const & literal );
-	static void fromDouble( std::string const & literal );
-	static void printConversions( char c, int i, float f, double d, int precision );
+	static Type getType( void );
+	static bool validateLiteral( void );
+	static size_t getPrecision( void );
+	static void fromChar( void );
+	static void fromInt( void );
+	static void fromFloat( void );
+	static void fromDouble( void );
+	static void fromInvalid( void );
+
 public:
 	ScalarConverter( void );
 	ScalarConverter( ScalarConverter const & other );
@@ -29,4 +31,4 @@ public:
 	static void convert( std::string const & literal );
 };
 
-#endif /* SCALARCONVERTER_HPP */
+#endif /* SCALAR_CONVERTER_HPP */
