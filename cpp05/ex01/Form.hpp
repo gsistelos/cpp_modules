@@ -13,6 +13,7 @@ private:
 	bool _signed;
 	int const _signGrade;
 	int const _executeGrade;
+
 public:
 	Form( void );
 	Form( std::string const & name, int signGrade, int executeGrade );

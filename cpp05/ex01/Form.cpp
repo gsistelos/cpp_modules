@@ -8,20 +8,15 @@ Form::Form( void ) : _name("default"), _signed(false), _signGrade(1), _executeGr
 Form::Form( std::string const & name, int signGrade, int executeGrade )
 : _name(name), _signed(false), _signGrade(signGrade), _executeGrade(executeGrade)
 {
-	if (_signGrade < 1)
+	if (_signGrade < 1 || _executeGrade < 1)
 		throw Form::GradeTooHighException();
-	if (_signGrade > 150)
-		throw Form::GradeTooLowException();
-	if (_executeGrade < 1)
-		throw Form::GradeTooHighException();
-	if (_executeGrade > 150)
+	if (_signGrade > 150 || _executeGrade > 150)
 		throw Form::GradeTooLowException();
 }
 
 Form::Form( Form const & other )
-: _name(other.getName()), _signGrade(other.getSignGrade()), _executeGrade(other.getExecuteGrade())
+: _name(other._name), _signed(other._signed), _signGrade(other._signGrade), _executeGrade(other._executeGrade)
 {
-	*this = other;
 }
 
 Form::~Form()
@@ -30,7 +25,7 @@ Form::~Form()
 
 Form& Form::operator=( Form const & other )
 {
-	_signed = other.getSigned();
+	_signed = other._signed;
 	return *this;
 }
 
@@ -56,7 +51,7 @@ int Form::getExecuteGrade( void ) const
 
 void Form::beSigned( Bureaucrat const & bureaucrat )
 {
-	if (bureaucrat.getGrade() > getSignGrade())
+	if (bureaucrat.getGrade() > _signGrade)
 		throw Form::GradeTooLowException();
 	_signed = true;
 }
