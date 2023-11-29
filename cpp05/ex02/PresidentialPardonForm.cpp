@@ -1,10 +1,10 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm( void ) : AForm("PresidentialPardonForm", "default", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm( void ) : AForm("default", "PresidentialPardonForm", 25, 5)
 {
 }
 
-PresidentialPardonForm::PresidentialPardonForm( std::string const & target ) : AForm("PresidentialPardonForm", target, 25, 5)
+PresidentialPardonForm::PresidentialPardonForm( std::string const & target ) : AForm(target, "PresidentialPardonForm", 25, 5)
 {
 }
 

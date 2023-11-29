@@ -2,7 +2,6 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
-#include <iostream>
 
 int main( void )
 {
@@ -12,6 +11,7 @@ int main( void )
 
 	Bureaucrat gguedes("gguedes", 87);
 	Bureaucrat grsaiago("grsaiago", 10);
+	Bureaucrat admin("admin", 1);
 
 	grsaiago.executeForm(shrubbery);
 	grsaiago.executeForm(robotomy);
@@ -32,6 +32,8 @@ int main( void )
 	grsaiago.executeForm(shrubbery);
 	grsaiago.executeForm(robotomy);
 	grsaiago.executeForm(presidential);
+
+	admin.executeForm(presidential);
 
 	return 0;
 }
