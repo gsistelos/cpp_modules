@@ -1,27 +1,22 @@
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-AForm::AForm( void ) : _name("default"), _target("default"), _signed(false), _signGrade(1), _executeGrade(1)
+AForm::AForm( void ) : _name("default"), _signed(false), _signGrade(1), _executeGrade(1)
 {
 }
 
-AForm::AForm( std::string const & name, std::string const & target, int signGrade, int executeGrade )
+AForm::AForm( std::string const & target, std::string const & name, int signGrade, int executeGrade )
 : _name(name), _target(target), _signed(false), _signGrade(signGrade), _executeGrade(executeGrade)
 {
-	if (_signGrade < 1)
+	if (_signGrade < 1 || _executeGrade < 1)
 		throw AForm::GradeTooHighException();
-	if (_signGrade > 150)
-		throw AForm::GradeTooLowException();
-	if (_executeGrade < 1)
-		throw AForm::GradeTooHighException();
-	if (_executeGrade > 150)
+	if (_signGrade > 150 || _executeGrade > 150)
 		throw AForm::GradeTooLowException();
 }
 
 AForm::AForm( AForm const & other )
-: _name(other.getName()), _signGrade(other.getSignGrade()), _executeGrade(other.getExecuteGrade())
+: _name(other._name), _target(other._target), _signed(other._signed), _signGrade(other._signGrade), _executeGrade(other._executeGrade)
 {
-	*this = other;
 }
 
 AForm::~AForm()
@@ -30,7 +25,7 @@ AForm::~AForm()
 
 AForm& AForm::operator=( AForm const & other )
 {
-	_signed = other.getSigned();
+	_signed = other._signed;
 	return *this;
 }
 
@@ -39,7 +34,7 @@ std::string const & AForm::getName( void ) const
 	return _name;
 }
 
-std::string AForm::getTarget( void ) const
+std::string const & AForm::getTarget( void ) const
 {
 	return _target;
 }
@@ -59,23 +54,18 @@ int AForm::getExecuteGrade( void ) const
 	return _executeGrade;
 }
 
-void AForm::setSigned( bool state )
-{
-	_signed = state;
-}
-
 void AForm::beSigned( Bureaucrat const & bureaucrat )
 {
-	if (bureaucrat.getGrade() > getSignGrade())
+	if (bureaucrat.getGrade() > _signGrade)
 		throw AForm::GradeTooLowException();
 	_signed = true;
 }
 
-void AForm::execute( Bureaucrat const & bureaucrat ) const
+void AForm::execute( Bureaucrat const & executor ) const
 {
-	if (getSigned() == false)
-		throw AForm::FormNotSignedException();
-	if (bureaucrat.getGrade() > getExecuteGrade())
+	if (_signed == false)
+		throw AForm::FormNotSigned();
+	if (executor.getGrade() > _executeGrade)
 		throw AForm::GradeTooLowException();
 	beExecuted();
 }
@@ -90,7 +80,7 @@ char const * AForm::GradeTooLowException::what() const throw()
 	return "Grade too low";
 }
 
-char const * AForm::FormNotSignedException::what() const throw()
+char const * AForm::FormNotSigned::what() const throw()
 {
 	return "Form not signed";
 }

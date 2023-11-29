@@ -1,10 +1,10 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm( void ) : AForm("RobotomyRequestForm", "default", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm( void ) : AForm("default","RobotomyRequestForm",  72, 45)
 {
 }
 
-RobotomyRequestForm::RobotomyRequestForm( std::string const & target ) : AForm("RobotomyRequestForm", target, 72, 45)
+RobotomyRequestForm::RobotomyRequestForm( std::string const & target ) : AForm(target, "RobotomyRequestForm", 72, 45)
 {
 }
 
@@ -19,7 +19,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm& RobotomyRequestForm::operator=( AForm const & other )
 {
-	setSigned(other.getSigned());
+	AForm::operator=(other);
 	return *this;
 }
 
