@@ -8,6 +8,13 @@ class ScalarConverter
 private:
 	enum Type { CHAR, INT, FLOAT, DOUBLE, INVALID };
 
+	ScalarConverter( void );
+	ScalarConverter( ScalarConverter const & other );
+
+	~ScalarConverter();
+
+	ScalarConverter& operator=( ScalarConverter const & other );
+
 	static void (*functions[])( void );
 	static std::string _literal;
 
@@ -21,13 +28,6 @@ private:
 	static void fromInvalid( void );
 
 public:
-	ScalarConverter( void );
-	ScalarConverter( ScalarConverter const & other );
-
-	~ScalarConverter();
-
-	ScalarConverter& operator=( ScalarConverter const & other );
-
 	static void convert( std::string const & literal );
 };
 
