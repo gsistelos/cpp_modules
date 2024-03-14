@@ -6,7 +6,7 @@ OBJ = $(SRC:.cpp=.o)
 
 CXX = g++
 
-CXXFLAGS = -Wall -Wextra -Werror --std=c++98 -I. -g
+CXXFLAGS = -Wall -Wextra -Werror --std=c++98 -I.
 
 RM = rm -f
 
