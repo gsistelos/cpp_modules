@@ -14,9 +14,9 @@ private:
   Serializer();
   ~Serializer();
 
-  Serializer(Serializer const &src);
+  Serializer(const Serializer &src);
 
-  Serializer &operator=(Serializer const &rhs);
+  Serializer &operator=(const Serializer &rhs);
 
 public:
   static uintptr_t serialize(Data *ptr);

@@ -6,7 +6,7 @@
 class ScalarConverter {
 private:
   ScalarConverter(void);
-  ScalarConverter(const ScalarConverter &other);
+  ScalarConverter(const ScalarConverter &src);
 
   ~ScalarConverter();
 

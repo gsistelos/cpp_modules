@@ -6,17 +6,6 @@
 #include <limits>
 #include <stdlib.h>
 
-ScalarConverter::ScalarConverter(void) {}
-
-ScalarConverter::ScalarConverter(const ScalarConverter &rhs) { (void)rhs; }
-
-ScalarConverter::~ScalarConverter() {}
-
-ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs) {
-  (void)rhs;
-  return *this;
-}
-
 void (*ScalarConverter::functions[])(void) = {
     &ScalarConverter::fromChar, &ScalarConverter::fromInt,
     &ScalarConverter::fromFloat, &ScalarConverter::fromDouble,
