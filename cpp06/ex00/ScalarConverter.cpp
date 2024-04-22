@@ -119,7 +119,8 @@ void ScalarConverter::fromFloat(void) {
   }
 
   if (f < std::numeric_limits<char>::min() ||
-      f > std::numeric_limits<char>::max())
+      f > std::numeric_limits<char>::max() ||
+      _literal == "nanf")
     std::cout << "char: impossible" << std::endl;
   else {
     char c = static_cast<char>(f);
@@ -130,7 +131,8 @@ void ScalarConverter::fromFloat(void) {
   }
 
   if (f < std::numeric_limits<int>::min() ||
-      f > (float)std::numeric_limits<int>::max())
+      f > (float)std::numeric_limits<int>::max() ||
+      _literal == "nanf")
     std::cout << "int: impossible" << std::endl;
   else
     std::cout << "int: " << static_cast<int>(f) << std::endl;
@@ -151,7 +153,8 @@ void ScalarConverter::fromDouble(void) {
   }
 
   if (d < std::numeric_limits<char>::min() ||
-      d > std::numeric_limits<char>::max())
+      d > std::numeric_limits<char>::max() ||
+      _literal == "nan")
     std::cout << "char: impossible" << std::endl;
   else {
     char c = static_cast<char>(d);
@@ -162,7 +165,8 @@ void ScalarConverter::fromDouble(void) {
   }
 
   if (d < std::numeric_limits<int>::min() ||
-      d > std::numeric_limits<int>::max())
+      d > std::numeric_limits<int>::max() ||
+      _literal == "nan")
     std::cout << "int: impossible" << std::endl;
   else
     std::cout << "int: " << static_cast<int>(d) << std::endl;
