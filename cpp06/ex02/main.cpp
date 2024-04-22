@@ -30,7 +30,25 @@ void identify(Base *p) {
     std::cout << "C" << std::endl;
 }
 
-void identify(Base &p) { identify(&p); }
+void identify(Base &p) {
+  try {
+    dynamic_cast<A &>(p);
+    std::cout << "A" << std::endl;
+  } catch (const std::exception &e) {
+  }
+
+  try {
+    dynamic_cast<B &>(p);
+    std::cout << "B" << std::endl;
+  } catch (const std::exception &e) {
+  }
+
+  try {
+    dynamic_cast<C &>(p);
+    std::cout << "C" << std::endl;
+  } catch (const std::exception &e) {
+  }
+}
 
 int main(void) {
   Base *p = generate();
