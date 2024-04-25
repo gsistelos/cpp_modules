@@ -1,14 +1,14 @@
-NAME		=	templates
+NAME = templates
 
-SRCS		=	main.cpp
+SRCS = main.cpp
 
-OBJS		=	$(SRCS:.cpp=.o)
+OBJS = $(SRCS:.cpp=.o)
 
-CXX			=	c++
+CXX =	c++
 
-CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -I.
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-RM			=	rm -f
+RM = rm -f
 
 all: $(NAME)
 
