@@ -1,5 +1,5 @@
-#ifndef BITCOINEXCHANGE_HPP
-#define BITCOINEXCHANGE_HPP
+#ifndef BITCOIN_EXCHANGE_HPP
+#define BITCOIN_EXCHANGE_HPP
 
 #include <map>
 #include <string>
@@ -7,17 +7,17 @@
 class BitcoinExchange {
 public:
   BitcoinExchange(void);
-  BitcoinExchange(const BitcoinExchange &rhs);
-  BitcoinExchange &operator=(const BitcoinExchange &rhs);
+  BitcoinExchange(const BitcoinExchange &src);
   ~BitcoinExchange();
 
-  void parseData(const std::string &filename);
-  void exchange(const std::string &filename) const;
+  BitcoinExchange &operator=(const BitcoinExchange &rhs);
 
-  void printExchangeRates(void) const;
+  void exchange(const std::string &filename);
 
 private:
-  std::map<std::string, double> _exchangeRates;
+  std::map<std::string, double> price_ot; // bitcoin price over time
+
+  double getPrice(const std::string &date);
 };
 
-#endif // BITCOINEXCHANGE_HPP
+#endif

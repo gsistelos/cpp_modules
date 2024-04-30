@@ -1,12 +1,19 @@
 #include "BitcoinExchange.hpp"
+#include <iostream>
 
 int main(int argc, char *argv[]) {
-  (void)argc;
+  if (argc != 2) {
+    std::cout << "Usage: " << argv[0] << " <filename>" << std::endl;
+    return 1;
+  }
 
-  BitcoinExchange exchanger;
+  try {
+    BitcoinExchange bitcoin_exchange;
 
-  exchanger.parseData("data.csv");
-  exchanger.exchange(argv[1]);
+    bitcoin_exchange.exchange(argv[1]);
+  } catch (const std::exception &e) {
+    std::cerr << "Error: " << e.what() << std::endl;
+  }
 
   return 0;
 }

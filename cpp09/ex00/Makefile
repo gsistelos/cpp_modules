@@ -1,28 +1,28 @@
-NAME		=	btc
+NAME = btc
 
-SRCS		=	main.cpp utils.cpp BitcoinExchange.cpp
+SRC = main.cpp BitcoinExchange.cpp
 
-OBJS		=	$(SRCS:.cpp=.o)
+OBJ = $(SRC:.cpp=.o)
 
-CXX			=	c++
+CXX = c++
 
-CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-RM			=	rm -f
+RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CXX) $(OBJS) -o $(NAME)
+$(NAME): $(OBJ)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 .cpp.o:
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJ)
 
 fclean:
-	$(RM) $(OBJS) $(NAME)
+	$(RM) $(OBJ) $(NAME)
 
 re: fclean all
 
