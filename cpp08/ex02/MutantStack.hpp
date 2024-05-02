@@ -19,8 +19,9 @@ public:
 
   typedef typename std::deque<T>::iterator iterator;
 
-  iterator begin() { return std::stack<T>::c.begin(); }
-  iterator end() { return std::stack<T>::c.end(); }
+  // Accessing the protected member of stack, since MutantStack inherits from it
+  iterator begin() { return this->c.begin(); }
+  iterator end() { return this->c.end(); }
 };
 
 #endif
