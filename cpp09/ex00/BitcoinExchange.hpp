@@ -6,12 +6,17 @@
 
 class BitcoinExchange {
 public:
+  // Constructors
   BitcoinExchange(void);
   BitcoinExchange(const BitcoinExchange &src);
+
+  // Destructor
   ~BitcoinExchange();
 
+  // Operator overloads
   BitcoinExchange &operator=(const BitcoinExchange &rhs);
 
+  // Methods
   void exchange(const std::string &filename);
 
 private:

@@ -6,12 +6,17 @@
 
 class RPN {
 public:
+  // Constructors
   RPN(void);
   RPN(const RPN &src);
+
+  // Destructor
   ~RPN();
 
+  // Operator overloads
   RPN &operator=(const RPN &rhs);
 
+  // Methods
   void calculate(const std::string &expression);
 
 private:
