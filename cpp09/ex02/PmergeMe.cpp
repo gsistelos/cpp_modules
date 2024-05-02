@@ -2,21 +2,36 @@
 
 #include <algorithm>
 #include <cerrno>
-#include <iostream>
+
+#define INSERTION_THRESHOLD 16 // Threshold for switching to insertion sort
+
+template <typename T> void insertionSort(T begin, T end) {
+  for (T i = begin + 1; i != end; ++i) {
+    typename T::value_type key = *i;
+    T j = std::upper_bound(begin, i, key);
+
+    std::rotate(j, i, i + 1);
+  }
+}
 
 template <typename T>
-static void mergeInsertSort(T &data, typename T::iterator begin,
-                            typename T::iterator end) {
-  if (end - begin < 2) {
-    return;
+void mergeInsertionSort(T &data, typename T::iterator begin,
+                        typename T::iterator end) {
+  int size = std::distance(begin, end);
+
+  if (size <= INSERTION_THRESHOLD) {
+    insertionSort(begin, end);
+  } else {
+    // Divide the range into two halves
+    typename T::iterator mid = begin + (size / 2);
+
+    // Sort each half recursively using merge-insertion sort
+    mergeInsertionSort(data, begin, mid);
+    mergeInsertionSort(data, mid, end);
+
+    // Merge the sorted halves using merge sort
+    std::inplace_merge(begin, mid, end);
   }
-
-  typename T::iterator mid = begin + (end - begin) / 2;
-
-  mergeInsertSort(data, begin, mid);
-  mergeInsertSort(data, mid, end);
-
-  std::inplace_merge(begin, mid, end);
 }
 
 PmergeMe::PmergeMe(void) : vecTime(0.0), deqTime(0.0) {}
@@ -55,13 +70,13 @@ void PmergeMe::mergeMe(void) {
   clock_t start, end;
 
   start = clock();
-  mergeInsertSort(this->vec, vec.begin(), vec.end());
+  mergeInsertionSort(this->vec, vec.begin(), vec.end());
   end = clock();
 
   this->vecTime = static_cast<double>(end - start) / CLOCKS_PER_SEC;
 
   start = clock();
-  mergeInsertSort(this->deq, deq.begin(), deq.end());
+  mergeInsertionSort(this->deq, deq.begin(), deq.end());
   end = clock();
 
   this->deqTime = static_cast<double>(end - start) / CLOCKS_PER_SEC;
